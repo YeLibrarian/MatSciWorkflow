@@ -1,0 +1,28 @@
+Instrument ID	Instrument Description	Instrument Type	Instrument collaborator	Notes
+Tube furnace	Tube furnace	Synthesis	Group	NA
+XRS:MIT MRL	X-ray Photonelectron Spectroscopy or Electron Spectroscopy for Chemical Analysis, location: MIT MRL	Characterization	MIT MRL	NA
+XRS:MIT CMSE	X-ray Photonelectron Spectroscopy or Electron Spectroscopy for Chemical Analysis, location: MIT CMSE	Characterization	MIT CMSE	NA
+XPS:Harvard CNS	X-ray Photonelectron Spectroscopy or Electron Spectroscopy for Chemical Analysis, location: Harvard Center for Nanoscale Systems (CNS)	Characterization	Harvard CNS (Center of Nanoscale Science)	NA
+Raman:MIT MRL	Raman Spectroscopy, location: MIT MRL	Characterization	MIT MRL	NA
+External synthesis setup	Setup to synthesize single crystals in an external collaborator's lab	Synthesis	Group	NA
+Thin gold strip	Thin gold strup prepared on silicon wafer	Transform	Group	NA
+XRD:MIT MRL	X-Ray Diffractometer, location: MIT MRL	Characterization	MIT MRL	NA
+XRF:MIT MRL	X-Ray Flourescence, location: MIT MRL	Characterization	MIT MRL	NA
+Optical Microscope:Shiwan Lab	Optical Microscope with rotating stage	Characterization	Group	Shiwan's Lab in MechE
+Optical Microscope:External Group F	location: External Group:MITC (Professor Keith Nelson Group MIT Chemistry Department)	Characterization	External Group:MIT_C	NA
+Lab workbench or hood	Bench or ventilated cabinet in the lab	Transform	Group	Jaramillo's Lab in DMSE
+Ellipsometry with Laser Setup:ISN	Elipsometry with Laser Setup located at MIT Institute for Soldier Nanotechnologies	Characterization	MIT ISN	NA
+Ellipsometry:Tufts	location: Tufts	Characterization	Tufts Machine Room	NA
+Small angle reflection	Substrate characterization	Characterization	Group	NA
+MBE	Molecular Beam Epitaxy for thin-film synthesis	Transform	Group	NA
+Origin plot software	XRD and XRF data plotting	Analysis	MIT MRL	NA
+HighScore Plus software	XRD plot peak-fitting	Analysis	MIT MRL	NA
+XRF software	XRF plot peak-fitting	Analysis	Group	NA
+SEM with 4-probe:External Group I	scanning electron microscope, can include 4-probe set up for electrical property measurement, location: External Group:MITB (unknown collaborator at MIT, collaborating with SF)	Characterization	External Group:MIT_B	NA
+Photolithography	etch pattern into thin-film	Transform	Group	NA
+Polish:MIT DMSE	smooth surface of material, location: MIT DMSE	Transform	MIT DMSE polishing lab	NA
+Melt in epoxy	melt material in resin	Transform	Group	NA
+CVT	chemical vapor transport (for growing thin-film)	Synthesis	Group	NA
+Unspecified analysis technique	when analysis is inferred but not specified	Analysis	Group	NA
+MLA:Nano	location: MIT Nano	Characterization	MIT Nano	NA
+FTIR:Harvard CNS	Fourier transform infrared spectroscopy, location: Harvard Center for Nanoscale Systems (CNS)	Characterization	Harvard CNS (Center of Nanoscale Science)	NA

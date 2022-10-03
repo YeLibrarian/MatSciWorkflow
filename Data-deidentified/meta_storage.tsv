@@ -1,0 +1,29 @@
+Storage ID	Description	Type	IsInstitutionalStorage	IsStructureStorage	IsDigital	IsOnline
+Labarchive	NA	ELN	TRUE	TRUE	TRUE	TRUE
+Dropbox:Group	group dropbox	Cloud	TRUE	TRUE	TRUE	TRUE
+USB_D	individual's usb	Media	FALSE	TRUE	TRUE	TRUE
+TubeStorage	NA	Instrument	FALSE	FALSE	TRUE	TRUE
+Dropbox_D	NA	Cloud	FALSE	TRUE	TRUE	TRUE
+Email_D	NA	Email	FALSE	FALSE	TRUE	TRUE
+Dropbox_C	NA	Cloud	FALSE	TRUE	TRUE	TRUE
+Unknown Physical	Cabinet in a lab to store samples	Physical facility	FALSE	TRUE	FALSE	FALSE
+Lab sample storage	Cabinet in the group lab	Physical facility	TRUE	TRUE	FALSE	FALSE
+OneNote_C	Personal OneNote account forC	ELN	FALSE	TRUE	TRUE	TRUE
+Email_C	Personal email communication	Email	FALSE	FALSE	TRUE	TRUE
+Email_A	Personal email communication	Email	FALSE	FALSE	TRUE	TRUE
+Labarchive_A	Personal labarchive	ELN	FALSE	TRUE	TRUE	TRUE
+Labarchive:Group	group labarchive	ELN	TRUE	TRUE	TRUE	TRUE
+Unspecified backup software from MIT	NA	Cloud	TRUE	TRUE	TRUE	TRUE
+USB_B	personal USB	Media	FALSE	TRUE	TRUE	TRUE
+Labarchive_B	personal labarchive	ELN	FALSE	TRUE	TRUE	TRUE
+Dropbox_B	personal dropbox	Cloud	FALSE	TRUE	TRUE	TRUE
+Email_B	personal email	Email	FALSE	FALSE	TRUE	TRUE
+Postal Carrier	physical mail (from collaborator)	Physical facility	FALSE	FALSE	FALSE	FALSE
+Email:Collaborator	collaborator's email	Email	FALSE	FALSE	TRUE	TRUE
+Labarchive_D	personal labarchive	ELN	FALSE	TRUE	TRUE	TRUE
+XPS software	computer software	Instrument	FALSE	FALSE	TRUE	FALSE
+Non-linear fitting software	computer software	Instrument	FALSE	FALSE	TRUE	FALSE
+Origin plot software	computer software	Instrument	FALSE	FALSE	TRUE	FALSE
+Dropbox_D	personal dropbox	Cloud	FALSE	TRUE	TRUE	TRUE
+USCB	collaborator	Collaborator	FALSE	FALSE	FALSE	FALSE
+Collaborator sample storage	collaborator storage for physical sample	Physical facility	FALSE	TRUE	FALSE	FALSE
