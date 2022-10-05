@@ -4,12 +4,15 @@ author:
   - name: Ye Li
     email: yel@mit.edu
     affiliation: Massachusetts Institute of Technology
+    institute: Massachusetts Institute of Technology
   - name: Sara Wilson
     email: slwilson@mit.edu
     affiliation: Massachusetts Institute of Technology
+    institute: Massachusetts Institute of Technology
   - name: Micah Altman
     email: escience@mit.edu
     affiliation: Massachusetts Institute of Technology
+    institute: Massachusetts Institute of Technology
     corresponding: escience@mit.edu
 address:
   - code: Massachusetts Institute of Technology
@@ -21,9 +24,7 @@ output:
   pdf_document:
     pandoc_args:
       - '--lua-filter=scholarly-metadata.lua'
-      - '--lua-filter=author-info-blocks.lua'
-    toc: yes
-    toc_depth: '2'
+      - '--lua-filter=author-info-blocks.lua' 
   html_document:
     toc: yes
     toc_depth: 2
