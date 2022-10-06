@@ -3,6 +3,7 @@ title: "Reproducible and Attributable Materials Science Workflows"
 institute: 
   - first: MIT Libraries, Massachusetts Institute of Technology
   - second: Department of Mechnical Engineering, Massachusetts Institute of Technology
+  - third: Center for Research in Equitable and Open Scholarship, Massachusetts Institute of Technology
 author:
   - name: Ye Li
     email: yel@mit.edu
@@ -16,8 +17,8 @@ author:
     institute: second
   - name: Micah Altman
     email: escience@mit.edu
-    affiliation: MIT Libraries, Massachusetts Institute of Technology
-    institute: first
+    affiliation: Center for Research in Equitable and Open Scholarship, Massachusetts Institute of Technology
+    institute: third
     correspondence: "yes"
     corresponding: escience@mit.edu
 address:
