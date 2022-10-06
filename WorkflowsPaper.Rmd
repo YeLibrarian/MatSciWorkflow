@@ -1,18 +1,24 @@
 ---
 title: "Reproducible and Attributable Materials Science Workflows"
+institute: 
+  - first: MIT Libraries, Massachusetts Institute of Technology
+  - second: Department of Mechnical Engineering, Massachusetts Institute of Technology
 author:
   - name: Ye Li
     email: yel@mit.edu
-    affiliation: Massachusetts Institute of Technology
-    institute: Massachusetts Institute of Technology
+    affiliation: MIT Libraries, Massachusetts Institute of Technology
+    institute: first
+    correspondence: "yes"
+    corresponding: yel@mit.edu 
   - name: Sara Wilson
     email: slwilson@mit.edu
-    affiliation: Massachusetts Institute of Technology
-    institute: Massachusetts Institute of Technology
+    affiliation: Department of Mechnical Engineering, Massachusetts Institute of Technology
+    institute: second
   - name: Micah Altman
     email: escience@mit.edu
-    affiliation: Massachusetts Institute of Technology
-    institute: Massachusetts Institute of Technology
+    affiliation: MIT Libraries, Massachusetts Institute of Technology
+    institute: first
+    correspondence: "yes"
     corresponding: escience@mit.edu
 address:
   - code: Massachusetts Institute of Technology
