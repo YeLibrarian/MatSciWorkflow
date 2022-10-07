@@ -1,7 +1,7 @@
 # Reproducible and Attributeable Materials Science Workflows
 [![DOI](https://zenodo.org/badge/544916792.svg)](https://zenodo.org/badge/latestdoi/544916792) 
 
-## Version: 1.1
+## Version: 0.1
 
 ## Description
 This site provides the deidentified data, reproducible analysis and research report of the project on Reproducible and Attributeable Materials Science Workflows. 
