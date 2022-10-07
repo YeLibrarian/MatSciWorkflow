@@ -39,13 +39,13 @@ This materials is distributed under a CC BY 4.0 License https://creativecommons.
 * `Data-deidentified`:  folder for deidentified and coded interview data
     * `Data-deidentified\collabrator.tsv`: coded data describing collaborators worked with the research group we investigated
     * `Data-deidentified\meta_instrument.tsv`: coded data describing instruments used during their research workflow
-    * `Data-deidentified\meta_storage.tsv`: coded data descibing how research input and output is handled
+    * `Data-deidentified\meta_storage.tsv`: coded data describing how research input and output is handled
     * `Data-deidentified\recent_files.tsv`: file structure and information of data folder from the research group we investigated
     * `Data-deidentified\workflows.tsv`: coded data describing workflows in steps
 * `WorkflowsPaper_files`: folder for intermediate PDFs generated for figures in the article
 * `figs`: folder for individual figures in PNG format
-* `renv`: folder including files to manage project-local R dependency for reproducibile analysis 
-* `Appeendix_InterviewProtocol.md`: a markdown file of the interview protocol used in this study
+* `renv`: folder including files to manage project-local R dependency for reproducible analysis 
+* `Appendix_InterviewProtocol.md`: a markdown file of the interview protocol used in this study
 * **`WorkflowsPaper.Rmd`**: main Rmarkdown file including the R script to analyze and visualize the data in *Data-deidentified* folder and the markdown file for the research report 
 * `WorkflowsPaper.pdf`: a PDF of the research report generated from knitting the *WorkflowsPaper.Rmd* in RStudio 
 * `author-info-blocks.lua`: A filter file used to convert author info fields
