@@ -61,7 +61,7 @@ To run the data analysis and generate the report in PDF:
 - Open the project in RStudio Desktop (free version of the software available at https://www.rstudio.com/ )
 - Run the **WorkflowsPaper.Rmd** using *Knit to PDF* function in RStudio Desktop to generate the report **WorkflowsPaper.PDF** and the PNG figures under the **figs** folder
 
-[Or provide a cloud-hosted version in https://renkulab.io/ ??? ]
+
 
 ## Acknowledgement
 The authors thank the Professor Rafael Jaramillo at MIT for his commentary and for enabling access to lab records, and the members of the Jaramillo research group for participation in interviews.
