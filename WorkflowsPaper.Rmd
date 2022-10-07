@@ -1385,6 +1385,9 @@ ta2.gt
 ta3.gt
 ```
 
+# Data Availability
+The deidentified datasets generated during and/or analyzed during the the current study as well as the R scripts used for analysis and generating the research report are available in the Zenodo repository under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license, https://doi.org/10.5281/zenodo.7158715 
+
 # Acknowledgements
 
 The authors describe contributions to this article using a standard taxonomy. [@allen2014] All authors equally shared
