@@ -1,4 +1,5 @@
 # Reproducible and Attributeable Materials Science Workflows
+[![DOI](https://zenodo.org/badge/544916792.svg)](https://zenodo.org/badge/latestdoi/544916792) 
 
 ## Version: 1.1
 
@@ -32,7 +33,7 @@ This site provides the deidentified data, reproducible analysis and research rep
 This materials is distributed under a CC BY 4.0 License https://creativecommons.org/licenses/by/4.0/. 
 
 ## Cite the project as:
-*To be determined upon deposition into Zenodo* 
+Ye Li, Sara Wilson, Micah Altman. (2022). Reproducible and Attributeable Materials Science Workflows (dataset and research report), Zenodo, https://doi.org/10.5281/zenodo.7158643. 
 
 ## Data and file overview 
 
