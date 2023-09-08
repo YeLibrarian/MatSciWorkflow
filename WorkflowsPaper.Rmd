@@ -28,10 +28,6 @@ address:
 bibliography: ["references.bib"]
 abstract: "In this research we apply network analysis to data gathered through structured interviews and file forensics to evaluate the information flows and research workflows in materials science research projects. We discuss the gaps in reproducibility highlighted by this analysis, and suggest practical steps to making these scientific workflows more robust and sharable. \n"
 output:
-  pdf_document:
-    pandoc_args:
-      - '--lua-filter=scholarly-metadata.lua'
-      - '--lua-filter=author-info-blocks.lua' 
   html_document:
     toc: yes
     toc_depth: 2
@@ -42,6 +38,10 @@ output:
     toc_float:
       collapsed: yes
       smooth_scroll: yes
+  pdf_document:
+    pandoc_args:
+      - '--lua-filter=scholarly-metadata.lua'
+      - '--lua-filter=author-info-blocks.lua' 
   rticles::plos_article:
     fig_width: 5
     fig_height: 5
@@ -320,10 +320,10 @@ Each graduate student was interviewed by two researchers: one served as the inte
 transcriptionist. The interview audio was recorded and reviewed in comparison to the transcribed notes post-interview
 for completeness and accuracy.
 
-The interview protocol (see Appendix I) consisted of three sections: Interviewee Background, Top Priority
-Project Background, and Top Priority Project Workflow. The protocol served as a guideline for the interviewer to
-construct the most complete narrative of each student's workflow. Each question was either specifically asked or
-indirectly answered through the student's response to a different question.
+The interview protocol (see Appendix I) consisted of three sections: Interviewee Background, Top Priority Project
+Background, and Top Priority Project Workflow. The protocol served as a guideline for the interviewer to construct the
+most complete narrative of each student's workflow. Each question was either specifically asked or indirectly answered
+through the student's response to a different question.
 
 For the first section, Top Priority Project Workflow, it became evident that the most natural interview process was one
 in which the student first described his or her workflow, and then the interviewer asked follow-up questions for details
@@ -651,11 +651,18 @@ opportunity for human error in data management and organization.
 
 ## Workflow Dynamics
 
-We represent these workflows as formal graphs, and then apply social network analysis methods. (This follows a common
-approach to interpretation of workflows, first documented by [@tan2010].) The graph systematically describes all
-process, informational, and collaboration dependencies elicited through the interview process. Through analysis of this
-graph we can identify workflow gaps, evaluate processes with respect to stated policy, and probe potential
-interventions. Further, the graph structure provides a natural way of visualizing these workflows.
+We represent workflows as formal graphs, and then apply social network analysis methods. (This follows a common approach
+to interpretation of workflows, first documented by [@tan2010].) The graph systematically describes all process,
+informational, and collaboration dependencies elicited through the interview process. Through analysis of these ,graphs
+we can visually and analytically identify workflow gaps, evaluate processes with respect to stated policy, and probe
+potential interventions.
+
+We augment this core workflow graph in several ways. First, we create a collaborator network graph by coding the
+interviews directly for any mentions of collaborations. Second, we derive separate dependency, collaboration, and
+information flow graphs directly from the workflow process graph. Finally, we use this set of graphs together to probe
+questions related to collaboration (through analysis of connectivity and centrality). attribution (through comparing the
+explicitly elcited collaboration graph with its workflow-induced couterpart) and replicability (dependency, and
+subcomponent analysis of the information flow graph). [TODO: Add citations to graph analysis techniques]
 
 The process of creating the graph is summarized below. (For replication purpose, we have placed in a public archive all
 of the de-identified and coded interview data, and the software code necessary to construct the graph in detail, as well
@@ -666,7 +673,7 @@ as all of the code necessary to reproduce all figures and table.)
 
 -   Process dependencies are represented through sequences and sub-sequences. linked by "process" edges:
 
-    -   Actions that are all performed by the same person, in a required sequence, fore a single goal, and over a
+    -   Actions that are all performed by the same person, in a required sequence, for a single goal, and over a
         continuous period of time are represented by "sequence" nodes. Each sequence is linked by edges to one or more
         child sub-sequences.
 
@@ -927,7 +934,7 @@ REP_v_plag50days <- sump_lag.tbl[[1,"numeric.p50"]] %>% round(digits=0)
 The results are summarized below
 
 | Documented Procedures      | Inconsistencies with Practice                                                                                                                                                           |
-|----------------------------|--------------------------------------------------------------------------------------------|
+|------------------------------|------------------------------------------------------------------------------------------|
 | *Information sharing*      | Practices are predominantly consistent with documentation, although occasional lapses occur.                                                                                            |
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                            |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data and sample can often be identified by human inspection of the file and directory name. |
@@ -1367,18 +1374,26 @@ Empirical evidence, preferably from designed interventions are needed to reliabl
 general improve reproducibility and research attribution. [@opensci2018; @altman2021] Moreover, these practices are
 embedded in and responsive to a much broader system of scientific incentives, institutional and organizational
 collaboration, and professional training [@altman2018] -- research is needed in how effective practices can be aligned
-with incentives, training, institutional coordination, and infrastructure improvement. Intrinsically, recognizing the value of FAIR data sharing and
-computational use of experimental data for the research community in general and for their own study could further
-motivate individual researchers and their teams. Hiring data curators or research workflow facilitators to provide discipline-specific support for individual groups and departments could further enable researchers and overcome the barriers of starting new practices. Improvement of interfaces for human-computer interaction, accessibility and security of cloud-based systems could also be the key to lower the barriers for individual groups to fully adapt digital workflows recommended, especially when shared instrument facilities are often inseparable components of the infrastructure. With the improvement of research infrastructure for MSE that can
-integrate experimental data management and sharing as well as AI-based materials design, it will become critical to
-study how "small academic labs" could adapt to such infrastructure cost-effectively for open and reproducible research
-while maximizing the creativity.
+with incentives, training, institutional coordination, and infrastructure improvement. Intrinsically, recognizing the
+value of FAIR data sharing and computational use of experimental data for the research community in general and for
+their own study could further motivate individual researchers and their teams. Hiring data curators or research workflow
+facilitators to provide discipline-specific support for individual groups and departments could further enable
+researchers and overcome the barriers of starting new practices. Improvement of interfaces for human-computer
+interaction, accessibility and security of cloud-based systems could also be the key to lower the barriers for
+individual groups to fully adapt digital workflows recommended, especially when shared instrument facilities are often
+inseparable components of the infrastructure. With the improvement of research infrastructure for MSE that can integrate
+experimental data management and sharing as well as AI-based materials design, it will become critical to study how
+"small academic labs" could adapt to such infrastructure cost-effectively for open and reproducible research while
+maximizing the creativity.
 
 # Appendix
-## Interview Protocol 
-The interview protocol used in the study is shown in Appendix I. 
-    
+
+## Interview Protocol
+
+The interview protocol used in the study is shown in Appendix I.
+
 ## Tables
+
 ```{r supplementary-tables, echo=!doc_is_pdf}
 ta1.gt
 ta2.gt
@@ -1386,7 +1401,10 @@ ta3.gt
 ```
 
 # Data Availability
-The deidentified datasets generated during and/or analyzed during the the current study as well as the R scripts used for analysis and generating the research report are available in the Zenodo repository under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license, https://doi.org/10.5281/zenodo.7158715 
+
+The deidentified datasets generated during and/or analyzed during the the current study as well as the R scripts used
+for analysis and generating the research report are available in the Zenodo repository under [CC BY
+4.0](https://creativecommons.org/licenses/by/4.0/) license, <https://doi.org/10.5281/zenodo.7158715>
 
 # Acknowledgements
 
@@ -1397,8 +1415,8 @@ acquisition, and supervision. S.W. and Y.L. led the data curation (including col
 shared in writing of the original manuscript and in further refinement through commentary, review, editing, and
 revision.
 
-The authors thank the Professor Rafael Jaramillo at MIT for his commentary and for enabling access to lab records, and the
-members of the Jaramillo research group for participation in interviews.
+The authors thank the Professor Rafael Jaramillo at MIT for his commentary and for enabling access to lab records, and
+the members of the Jaramillo research group for participation in interviews.
 
 The authors thank MIT Libraries for the special fund and support to the project.
 
