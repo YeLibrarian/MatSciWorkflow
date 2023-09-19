@@ -66,16 +66,6 @@ editor_options:
     wrap: 120
 ---
 
-```{r  todos, include=FALSE, echo=FALSE}
-# (TODO: Characterize population from which Lab is drawn -- ~ 1000 material science departments, 10 of thousands of similar labs )
-#  (DRAFTED: Discuss validation interviews  )
-# (DONE: Check instrumentation lookup for collaboration analysis )
-# (DONE: Document alternate explanation for file forensic lags.)
-# (DONE: Configure templates and figures for plos formats)
-# (DONE: REvise figure 3.)
-
-```
-
 ```{r setup, include=FALSE, echo=FALSE}
 library(knitr)
 ## options for this document
@@ -219,7 +209,11 @@ researchers' daily practices.
 Notwithstanding these particular efforts and the overall progress made in the area of developing tools standards and
 practices, the adoption of these infrastructure and tools by individual "small" labs remains limited. No direct
 solutions have been provided for individual labs to streamline their workflows and efficiently prepare their data for
-sharing throughout the research lifecycle.
+sharing throughout the research lifecycle. Instead, these labs perform their work using informal sociotechnical
+workflows that combine a mixture of documented procedures, undocumented conventions, semi-automated tools, and manual
+processes. In this research we elicit the set of informal workflows operating within a top material science lab,
+document and describe these using a formal workflow graph notation, and analyze these workflows using both qualitative
+analysis and matrhematical graph analysis.
 
 ## Research Questions {#ResearchQuestions}
 
@@ -653,23 +647,24 @@ opportunity for human error in data management and organization.
 
 We represent workflows as formal graphs, and then apply social network analysis methods. (This follows a common approach
 to interpretation of workflows, first documented by [@tan2010].) The graph systematically describes all process,
-informational, and collaboration dependencies elicited through the interview process. Through analysis of these ,graphs
+informational, and collaboration dependencies elicited through the interview process. Through analysis of these graphs
 we can visually and analytically identify workflow gaps, evaluate processes with respect to stated policy, and probe
 potential interventions.
 
 We augment this core workflow graph in several ways. First, we create a collaborator network graph by coding the
 interviews directly for any mentions of collaborations. Second, we derive separate dependency, collaboration, and
-information flow graphs directly from the workflow process graph. Finally, we use this set of graphs together to probe
-questions related to collaboration (through analysis of connectivity and centrality). attribution (through comparing the
-explicitly elcited collaboration graph with its workflow-induced couterpart) and replicability (dependency, and
-subcomponent analysis of the information flow graph). [TODO: Add citations to graph analysis techniques]
+information flow graphs directly from the workflow process graph. Finally, we apply graph methods from network and
+social network analysis [@sharir1981; @horwitz1992; @carrington2005models] to probe questions related to collaboration
+(through analysis of connectivity and centrality). attribution (through comparing the explicitly elicited collaboration
+graph with its workflow-induced counterpart) and replicability (dependency, and subcomponent analysis of the information
+flow graph).
 
-The process of creating the graph is summarized below. (For replication purpose, we have placed in a public archive all
+The process of creating the graph is summarized below. (For replication purposes, we have placed in a public archive all
 of the de-identified and coded interview data, and the software code necessary to construct the graph in detail, as well
-as all of the code necessary to reproduce all figures and table.)
+as all of the code necessary to reproduce all figures and tables.)
 
 -   Each atomic action ("step") in the workflow is represented by a node on the graph. The node documents all of the
-    characteristics of that single actions.
+    characteristics of that single action.
 
 -   Process dependencies are represented through sequences and sub-sequences. linked by "process" edges:
 
@@ -934,7 +929,7 @@ REP_v_plag50days <- sump_lag.tbl[[1,"numeric.p50"]] %>% round(digits=0)
 The results are summarized below
 
 | Documented Procedures      | Inconsistencies with Practice                                                                                                                                                           |
-|------------------------------|------------------------------------------------------------------------------------------|
+|--------------------------------|----------------------------------------------------------------------------------------|
 | *Information sharing*      | Practices are predominantly consistent with documentation, although occasional lapses occur.                                                                                            |
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                            |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data and sample can often be identified by human inspection of the file and directory name. |
