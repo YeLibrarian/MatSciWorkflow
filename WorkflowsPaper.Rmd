@@ -64,6 +64,7 @@ params:
 editor_options:
   markdown:
     wrap: 120
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
