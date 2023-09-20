@@ -26,7 +26,7 @@ address:
     address: Cambridge, MA 02139
 #author_summary: "Ye Li, Sara Wilson & Micah Altman  \n"
 bibliography: ["references.bib"]
-abstract: "In this research we apply network analysis to data gathered through structured interviews and file forensics to evaluate the information flows and research workflows in materials science research projects. We discuss the gaps in reproducibility highlighted by this analysis, and suggest practical steps to making these scientific workflows more robust and sharable. \n"
+abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices. \n In this research we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice with respect to replicability, data-sharing, and attribution. By combining interviews, document review, and digital forensics we systematically reconstruct the workflows underpinning four research projects. \n We then apply information graph analysis and computer-assisted retrospective auditing identify where critical research  information is unavailable or at risk. \n  We find that while curation practices in this leading lab protect against computer and disk failure, they are not sufficient to ensure reproducibility or correct attribution of work -- especially where a group member withdraws before project completion.   \n We conclude with recommendations for adjustments to MSE data curation practices to promote robustness and transparency. "
 output:
   html_document:
     toc: yes
@@ -252,6 +252,10 @@ to ensure appropriate attribution of work.
 
 # Data and Methods
 
+## Overview
+
+![Overview of data sources and methods](figs/Coding.svg){width="625"}
+
 ## Interviewee Selection
 
 The use of 'small lab' is common in the literature, but often used unaccompanied by a precise definition. Within this
@@ -319,9 +323,10 @@ Background, and Top Priority Project Workflow. The protocol served as a guidelin
 most complete narrative of each student's workflow. Each question was either specifically asked or indirectly answered
 through the student's response to a different question.
 
-For the first section, Top Priority Project Workflow, it became evident that the most natural interview process was one
-in which the student first described his or her workflow, and then the interviewer asked follow-up questions for details
-which were incomplete or missing.
+For the last section, Top Priority Project Workflow, it became evident that the most natural interview process was one
+in which the student first described the overall workflow for the selected project, and then was prompted to recall each
+operational step of the process. The interview would then ask follow-up questions to fill obvious gaps, and to probe for
+additional detail.
 
 ## Interview Coding
 
@@ -549,7 +554,7 @@ To summarize each interviewee's workflow, which is visualized from the interview
 
 Interviewee 'A' is involved in the generation of each output through the workflow sequence: sample preparation,
 synthesis, characterization, and analysis. The workflow sequence is iterative. Therefore, the results from the analysis
-phase inform how the synthesis process for the next iteration will be tuned. They uss a personal LabArchives notebook to
+phase inform how the synthesis process for the next iteration will be tuned. They use a personal LabArchives notebook to
 record observations. Metadata from equipment is recorded in the group Dropbox. Pre- and post-processed data are saved to
 the group Dropbox.
 
@@ -592,8 +597,9 @@ has been a focus of study -- and systematic reviews demonstrate both the high le
 error, and the efficacy of error-reduction processes such as adoption of automated recording systems, and the use of
 explicit checklists and logs for manual procedures[@toerri2000, @mederror2021].
 
-It is not possible to determine from the data observed whether or not these workflows contained error -- instead, this
-analysis aims to identify areas of potential risk. Figure 1 summarizes selected characteristics of the workflow process.
+The data collection process was not designed to evaluate whether or not workflows contained explicit errors -- instead,
+the design and analysis aims to identify areas of potential risk. Figure 1 summarizes selected characteristics of the
+workflow process.
 
 ```{r  descriptives, echo=!doc_is_pdf, fig.height=7,fig.width=7}
 workflows.tbl %>% ggplot(aes(fct_rev(fct_infreq(`Step Type`)),fill=`Step Automation`)) +
@@ -850,9 +856,9 @@ During the interviews, one interviewee, who was self-identified as a founding me
 titled "Jaramillo group new member checklist", which described shared computing resources, lab safety and access, as
 well as data management practices. The interviewee shared the document afterwards, as a part of their Group Handbook. We
 reviewed the document along with the Computing Resources page on the group Wiki site to summarize the essential
-practices required for each group member. We also compared the documented group practice with the self-reported
-individual practices we summarized from interviews.We reviewed these documents both for relevance to the research
-question above, and for to inform the interpretation of the workflow networks below.
+practices required for each group member. We also compared the documented group practice with the individual practices
+elicited through interviews.We reviewed these documents both for relevance to the research question above, and for to
+inform the interpretation of the workflow networks below.
 
 We identified the the practices most relevant to data-management and scientific workflow management, and grouped them
 into three categories -- information sharing, information security, and information organization:
@@ -884,9 +890,9 @@ Information Organization
 
 -   P6. Samples are required to be named consistently with a given scheme including `YYMMDD` and a serial number.
 
-### Consistency of Documented vs. Observed Practices
+### Consistency of Documented vs. Recalled Practices
 
-We employed four strategies to evaluate the consistency of observed practices with documented practices:
+We employed four strategies to evaluate the consistency of recalled practices with documented practices:
 
 1.  In general, we identified all instances where subjects explicitly referred to documented and/or established
     practices during interview, either during the description of their project, or separately.
@@ -934,7 +940,7 @@ The results are summarized below
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                            |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data and sample can often be identified by human inspection of the file and directory name. |
 
-: Comparison of Documented Group Practice with Self-reported Individual Practices
+: Comparison of Documented Group Practice with Recalled Individual Practices
 
 The largest deviation with formal documented practice is in the area of information organization. Of the
 `r REP_n_recent_files` deposited over two years of proximity, less than a quarter (`r REP_p_all_meta`%) provided could
@@ -1241,11 +1247,12 @@ table below summarizes these omissions.
       select(interview,CHR_unmentioned,percentage) %>%
       mutate(CHR_unmentioned=ifelse(CHR_unmentioned=="","[None]",CHR_unmentioned)) %>%
       gt() %>%
-      cols_label(interview="Project", CHR_unmentioned="Undocumented  Contributor", percentage ="% of total collaborators") %>%
+     # cols_hide("CHR_unmentioned") %>%
+      cols_label(interview="Project", CHR_unmentioned="Undocumented  Types", percentage ="% undocumented contributors") %>%
       fmt_percent(  columns=percentage, decimals=0  ) %>%
       data_color( columns=`percentage`,  colors=scales::col_numeric( palette = c(
             "white", "red"),domain=c(1,0))) %>%
-      tab_header("Table 4: Undocumented collaborators", subtitle="Types of collaborations that were recalled, but not documented implicitly or explicitly.")
+      tab_header("Table 4: Undocumented collaborators", subtitle="Types of collaborations that were recalled, but not documented in project work.")
 ```
 
 As shown in the table, a significant proportion of the collaborations could not be associated with either the process of
@@ -1268,10 +1275,9 @@ institutional challenges to automating data collection from instruments outside 
 
 # Discussion - Toward More Reproducible and Attributed Practices
 
-The results of the workflow analysis above reveal the strengths and limitations of the current practice. Actual
-practices in the lab is, for the most part, observed to be consistent with the documented group processes, and is
-sufficient to mitigate against risk of data loss resulting from the failure of an individual computer and storage
-system.
+The results of the workflow analysis above reveal the strengths and limitations of the current practice. Reported
+practices in the lab is, for the most part, are consistent with the documented group processes, and is sufficient to
+mitigate against risk of data loss resulting from the failure of an individual computer and storage system.
 
 However, the documented policies nor the actual practice is sufficient to generally ensure reproducibility or complete
 attribution, nor to mitigate the risk of loss of critical information if an individual's withdraws suddenly from from
@@ -1311,7 +1317,7 @@ fully automated infrastructure for materials science remains is currently too ex
 smaller changes in infrastructure and tooling have the potential to mitigate a number of the gaps identified by the
 workflow analysis:
 
--   Recommendation 3: All of the observed workflows involved the extensive use of personal portable storage to manually
+-   Recommendation 3: All of the reported workflows involved the extensive use of personal portable storage to manually
     transfer data from experimental instruments. Further, the file-forensic analysis shows that there are the delays
     between file creation and deposit can be quite large. Moreover no systems are processes are in place that would
     detect common categories of human errors that occur at this stage, such as erasing or overwriting local files, loss
