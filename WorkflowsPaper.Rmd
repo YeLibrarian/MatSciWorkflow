@@ -334,9 +334,9 @@ The aim of the interview coding process was to describe the each step of the wor
 database. There are a wide range of existing formal models for provenance and workflow (see for example [@jandre2020]).
 However, most of these designed for automated execution, and contain much more detail than is feasible to elicit during
 a standard interview. We thus used a simplified coding approach in which the actions each described action was labeled
-with its objective, task, and subtask, and, the sequence, actor, input, output, data source, data target, equipment, and
-methods used were recorded using standardized codes. This tabular data was then used to impute collaboration and
-data-dependency graphs (see the *Results* section below).
+with its objective, task, and subtask, and, the sequence, actor, input, output, data source, data target, level of
+automation, type of action, equipment, and methods used were recorded using standardized codes. (See appendix.) This
+tabular data was then used to impute collaboration and data-dependency graphs (see the *Results* section below).
 
 The coding of the research workflow was conducted in four phases.
 
@@ -548,9 +548,9 @@ collaborator.tg %<>% bind_edges( collaborator.tbl %>%
         node_key="name")
 ```
 
-## Interview Overviews
+## Workflow Overviews
 
-To summarize each interviewee's workflow, which is visualized from the interview codings:
+For context, we describe the workflows for each of the four projects below:
 
 Interviewee 'A' is involved in the generation of each output through the workflow sequence: sample preparation,
 synthesis, characterization, and analysis. The workflow sequence is iterative. Therefore, the results from the analysis
@@ -585,7 +585,7 @@ shared LabArchives notebook folder.
 Group members regularly use equipment outside of the lab and outside of MIT -- which interviewees indicate create
 additional challenges for data transfer and documentation. Interviewees noted that equipment within the MSE Department
 is locatable through an internal wiki -- but there is no other central documentation or standardization around equipment
-configuration, data transfer, network access, or acknowledgement of equipmnet use.
+configuration, data transfer, network access, or acknowledgement of equipment use.
 
 ## Workflow Automation
 
@@ -597,9 +597,15 @@ has been a focus of study -- and systematic reviews demonstrate both the high le
 error, and the efficacy of error-reduction processes such as adoption of automated recording systems, and the use of
 explicit checklists and logs for manual procedures[@toerri2000, @mederror2021].
 
-The data collection process was not designed to evaluate whether or not workflows contained explicit errors -- instead,
-the design and analysis aims to identify areas of potential risk. Figure 1 summarizes selected characteristics of the
-workflow process.
+During the interviews, we collected information about the types of automation associated with each instrument, storage
+facility, and analysis method. As described in the methodology section, each workflow step was coded for the type of
+action performed, and level of automation used: as 'automated' if the step is initiated automatically following the
+prior step; 'partially' automated if the operation was launched manually, but was completely described by digital
+metadata (e.g. configuration files), or as 'manual' if the step depended on manually initiation and manually
+configuration for correct operation.
+
+Figure 1 summarizes selected characteristics of the workflow process. These figure reveals that overall, workflow is
+dominated by manual activities.
 
 ```{r  descriptives, echo=!doc_is_pdf, fig.height=7,fig.width=7}
 workflows.tbl %>% ggplot(aes(fct_rev(fct_infreq(`Step Type`)),fill=`Step Automation`)) +
@@ -631,11 +637,6 @@ p1full
 This figure provides an answer to the first [research question](#ResearchQuestions), concerning automation:
 
 > 1.  To what extent does research depend on manual processes for information management?
-
-Each workflow step was coded as 'automated' if it was performed without any manual intervention; as 'partially'
-automated if the operation was launched manually, but was completely described by digital metadata (e.g. configuration
-files), or as 'manual' if it depended on manually entered parameters for correct operation. These figure shows that
-workflow steps are predominantly manual, and that storage and analysis steps are almost entirely manual.
 
 Automation is not a panacea, and can increase systems complexity or decrease local transparency in ways that make
 increase errors across a broader system. Notwithstanding, automation is often recommended for tasks that do not involve
@@ -1389,9 +1390,9 @@ maximizing the creativity.
 
 # Appendix
 
-## Interview Protocol
+## Interview Protocol & Coding Dictionary
 
-The interview protocol used in the study is shown in Appendix I.
+The interview protocol and coding disctionary used in the study are shown in Appendix I.
 
 ## Tables
 
