@@ -255,7 +255,7 @@ to ensure appropriate attribution of work.
 
 ## Overview
 
-![Overview of data sources and methods](figs/Coding.svg){width="625"}
+![Fig 1: Overview of data sources and methods](figs/Coding.svg){width="625"}
 
 ## Interviewee Selection
 
@@ -540,16 +540,55 @@ rm(tmp)
 collaborator.tg <- create_empty(0,directed=TRUE)
 collaborator.tg %<>% bind_nodes ( tibble(
   name=collaborator.tbl %>% pull(interview) %>% unique(),
-  node_type="project"))
-collaborator.tg %<>% bind_nodes ( tibble(
-  name=collaborator.tbl %>% pull(Collaborator) %>% unique(),
-  node_type="collaborator"))
+  node_type="project", type="project"))
+collaborator.tg %<>% bind_nodes ( collaborator.tbl %>% select(Collaborator,`Collaborator organizational relationship`) %>% rename(name=Collaborator, type="Collaborator organizational relationship") %>% group_by(name) %>% slice_head(n=1) %>% ungroup() %>% mutate(node_type="collaborator"))
 collaborator.tg %<>% bind_edges( collaborator.tbl %>%
         rename(from=interview, to=Collaborator, edge_type=`Collaborator Role`),
         node_key="name")
 ```
 
 ## Workflow Overviews
+
+```{r wkflow-graph-func, echo=!doc_is_pdf, include=FALSE}
+workflow_graph_by_interviewee <- function(interviewee,fignum,savefig=TRUE) {
+  
+  out.plot <- workflows.tg %>%
+  activate(edges) %>% filter(!str_detect(edge_type,"information")) %>%
+  activate(nodes) %>% 
+      filter(interview==interviewee) %>%
+      mutate(`Step Type`=fct_recode(replace_na(`Step Type`,"none"),
+          "(dependency)"="none",
+          "analysis"="Analyze",
+          "data collection"="Simulate",
+          "data collection"="Transform",
+          "data management"="Store", 
+          "data management"="Transfer",
+          "data management"="Document", 
+          "data management"="Communicate", 
+          "data collection"="Measure",
+          "materials synthesis"="Synthesize"
+          )) %>% 
+  #mutate(node_label=ifelse(`Step SubSequence`==1 & node_type=="subsequence",str_squish(str_extract(Objective,"(\\w*)\\s")),"")) %>%
+    mutate(main_label=ifelse(`Step SubSequence`==1 & node_type=="subsequence",str_squish(Objective),"")) %>%
+     mutate(node_label=ifelse(node_type=="step",str_trunc(str_squish(Method),10),"")) %>%
+  ggraph("tree") +
+    #geom_edge_link(aes(color=edge_type)) +
+    geom_node_text(aes(label=node_label), repel=TRUE, size=2) +
+    geom_node_label(aes(label=main_label), repel=TRUE) +
+    geom_edge_link() +
+    geom_node_point(aes(color=`Step Type`)) +
+  labs(title="",color="") +
+  plot_annotation(
+  title = paste0("Figure ",fignum,interviewee,": workflow overview -- project ",interviewee),
+  subtitle = str_wrap("Workflow steps by phases, description, and type. ",100),
+  theme = theme_economist()
+  ) +theme(legend.position = c(0.15, .3))
+  if (savefig) {
+      out.plot %>% ggsave(filename=paste0("figs/fig",fignum,interviewee,".png"),width=7,dpi=300)
+  }
+  out.plot
+}
+```
 
 For context, we describe the workflows for each of the four projects below:
 
@@ -559,6 +598,12 @@ phase inform how the synthesis process for the next iteration will be tuned. The
 record observations. Metadata from equipment is recorded in the group Dropbox. Pre- and post-processed data are saved to
 the group Dropbox.
 
+```{r workflow-a,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+
+
+workflow_graph_by_interviewee("A",2)
+```
+
 Interviewee 'B' received the synthesized sample from a collaborator. They are responsible for preparing the sample for
 analysis, characterizing it, and analyzing the data. They use a personal LabArchives notebook as an electronic lab
 notebook, so any conditions needed to interpret and replicate a process are recorded. The group LabArchives notebook is
@@ -566,16 +611,38 @@ used for recording measurements on lab tools that are shared, as to maintain a c
 Professor). The group Dropbox is used for saving raw data that is directly output from instruments. Post-processed data
 is saved to a personal Dropbox.
 
+```{r workflow-b,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+
+workflow_graph_by_interviewee("B",2)
+```
+
 Interviewee 'C' received the synthesized materials from a collaborator. They prepare the acquired sample for analysis,
 characterizes it, and analyzes the results. Finally,they transforms the sample via a laser set-up; this process is
 iterative, as the transformed sample is characterized. A personal OneNote notebook is used for experimental notes.
 OneNote is manually synchronized to the group LabArchives notebook. In the group Dropbox, they record all sample notes,
 raw data, and analyzed data.
 
+```{r workflow-c,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+
+
+workflow_graph_by_interviewee("C",2)
+```
+
 Interviewee 'D' is directly involved in each step of the sequence, which includes sample preparation, characterization,
 analysis, and simulation. A personal LabArchives notebook is used to write details of each experiment and record
 measurements from equipment from the synthesis process. The group Dropbox is used to save equipment metadata and only
 raw or lightly processed data from characterization. A personal Dropbox is used for processed data.
+
+```{r workflow-d,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+
+
+workflow_graph_by_interviewee("D",2)
+```
+
+Note that each workflow is hierarchical -- each of the projects do not interact (there are no connecting branches), and
+the work can be represented as a set of independent self-contained tasks. (Summary graph statistics are shown in the
+Appendix, Table A1.) Most of the tasks contain only one atomic action. Further, there is a rhythm across each workflow
+in which the type of task at each step alternates.
 
 All four interviewees used some instruments or equipment outside their own lab, either at a shared facility or in a
 collaborator's lab. Each interviewee saved a copy of raw data from those instruments in the group Dropbox but had
@@ -605,7 +672,7 @@ prior step; 'partially' automated if the operation was launched manually, but wa
 metadata (e.g. configuration files), or as 'manual' if the step depended on manually initiation and manually
 configuration for correct operation.
 
-Figure 1 summarizes selected characteristics of the workflow process. These figure reveals that overall, workflow is
+Figure 3 summarizes selected characteristics of the workflow process. These figure reveals that overall, workflow is
 dominated by manual activities.
 
 ```{r  descriptives, echo=!doc_is_pdf, fig.height=7,fig.width=7}
@@ -631,8 +698,8 @@ p1b/(p1a| p1c) +  plot_annotation(
   theme = theme_economist()
 ) -> p1full
 
-p1full %>% ggsave(filename = "figs/fig1.png" , width=7, dpi=300)
-p1full
+p3full %>% ggsave(filename = "figs/fig3.png" , width=7, dpi=300)
+p3full
 ```
 
 This figure provides an answer to the first [research question](#ResearchQuestions), concerning automation:
@@ -736,52 +803,10 @@ graph_table <- function(data,ntypes,etypes,glabel) {
 }
 ```
 
-Figure 2 illustrates the workflow processes over time. The workflow is hierarchical -- each of the projects do not
-interact (there are no connecting branches), and the work can be represented as a set of independent self-contained
-tasks. (Summary graph statistics are shown in the Appendix, Table A1.) Most of the tasks contain only one atomic action.
-Further, there is a rhythm across each workflow in which the type of task at each step alternates.
-
-```{r flow-graphs-process,  echo=!doc_is_pdf}
-
-p2 <- workflows.tg %>%
-  activate(edges) %>% filter(!str_detect(edge_type,"information")) %>%
-  activate(nodes) %>% mutate(node_label=ifelse(`Step SubSequence`==1 & node_type=="subsequence",str_squish(str_extract(Objective,"(\\w*)\\s")),"")) %>%
-  ggraph("tree") +
-    #geom_edge_link(aes(color=edge_type)) +
-    #geom_node_point(aes(color=`Step Type`, shape=node_type)) +
-    #geom_node_text(aes(label=node_label)) +
-    geom_edge_link() +
-    geom_node_point(aes(color=fct_recode(replace_na(`Step Type`,"none"),
-          "(dependency)"="none",
-          "analysis"="Analyze",
-          "data collection"="Simulate",
-          "data collection"="Transform",
-          "data management"="Store", 
-          "data management"="Transfer",
-          "data management"="Document", 
-          "data management"="Communicate", 
-          "data collection"="Measure",
-          "materials synthesis"="Synthesize"
-          ))) +
-    geom_node_text(aes(label=node_label)) +
-  labs(title="",color="") +
-  plot_annotation(
-  title = "Figure 2: Workflow steps and dependencies.",
-  subtitle = str_wrap("Four workflows visualized by phases and individual step. Each project is independent of the others, proceeds in a roughly linear fashion.",100), caption="(Step types have been grouped into categories for visual clarity.)",
-  theme = theme_economist()
-  )
-
-ta1.gt<- (workflows.tg %>%
-  graph_table(c("subsequence","step"),c("sequential","parent"),"Table A1: Workflow Process Statistics"))
-
-p2 %>% ggsave(filename="figs/fig2.png",width=7,dpi=300)
-
-p2
-```
-
-In contrast to process flow, as shown in Figure 3, the information flow is connected in dense clusters within projects.
-Most information flow is implicit -- through shared context. Information rarely flows through direct input-output. There
-is no information flow between projects.
+The information connections within and across projects (Figure 3) is densely interconnected within projects -- a
+contrast with the linearity of the process used to produce the information. Further, most information flow is implicit
+-- through shared context. Information rarely flows through direct input-output. There is no information flow between
+projects.
 
 ```{r  flow-graphs-info,  echo=!doc_is_pdf}
 # information network
@@ -801,17 +826,17 @@ workflows.tg %>%
   ggraph("fr") +
     geom_edge_link(aes(color=edge_type)) +
      geom_node_point(aes(shape=as.factor(projectid)))+
-      geom_node_text(aes(label=node_label))+
+      #geom_node_text(aes(label=node_label))+
   labs(title="",shape="Project",edge_color="Relationship") +
   plot_annotation(
-  title = "Figure 3: Project Information Exchange.",
+  title = "Figure 4: Project Information Exchange.",
   subtitle = str_wrap("Implicit and indirect information exchange occurs frequently within projects, but does not connect projects."),
   theme = theme_economist()
   ) -> p3
 
-p3 %>% ggsave(filename="figs/fig3.png" , width=7, dpi=300)
+p4 %>% ggsave(filename="figs/fig3.png" , width=7, dpi=300)
 
-p3
+p4
 workflows.tg %>%
   graph_table(c("subsequence","step"),c("information:shared_context","information:shared_input","information:input_output"),"Table A2:  Information Exchange Graph Statistics") -> ta2.gt
 ```
@@ -821,18 +846,21 @@ across projects.
 
 ```{r flow-graphs-collab,  echo=!doc_is_pdf,   warning=FALSE}
 collaborator.tg %>%
+  activate(nodes) %>%
+  mutate(node_label=ifelse(node_type=="project",name,"")) %>%
   ggraph("stress") +
-    geom_edge_link(aes(color=edge_type)) +
-    geom_node_point(aes(shape=node_type,size=node_type,color=node_type))+
-      geom_node_text(aes(label=name)) +
+    geom_edge_link(aes(edge_linetype=edge_type)) +
+    geom_node_point(aes(shape=node_type,size=node_type,color=type), 
+                    show.legend=c(color=TRUE,shape=FALSE))+
+    geom_node_text(aes(label=node_label)) +
    labs(title="") +
   plot_annotation(
-  title = "Figure 4: Project Collaboration.",
+  title = "Figure 5: Project Collaboration.",
   theme = theme_economist()
-  )  -> p4
+  )  -> p5
 
-p4
-p4 %>% ggsave(filename="figs/fig4.png" , width=7, dpi=300)
+p5
+p5 %>% ggsave(filename="figs/fig5.png" , width=7, dpi=300)
 
 
 

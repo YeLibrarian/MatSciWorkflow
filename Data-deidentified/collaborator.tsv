@@ -1,30 +1,30 @@
-Collaborator	Collaborator Role	interview
-NSF	Funder	A
-Group	Co-researcher	A
-USC	Co-researcher	A
-MIT MRL	Instrumentation	A
-USCB	Co-researcher	B
-Unknown	Funder	B
-Group	Co-researcher	B
-MIT Nano	Instrumentation	B
-External Group:MIT_B	Instrumentation	B
-MIT MRL	Instrumentation	B
-MIT DMSE polishing lab	Instrumentation	B
-ONR	Funder	C
-MIT	Co-researcher	C
-External Group:MIT_C	Instrumentation	C
-External Group:non-MIT_C	Sample provider	C
-MIT ISN	Instrumentation	C
-MIT MRL	Instrumentation	C
-MURI	Funder	D
-ONR	Funder	D
-UMD	Instrumentation	D
-UW	Prospective Researcher	D
-Group	Co-researcher	D
-Group - Past	Co-researcher	D
-Harvard CNS (Center of Nanoscale Science)	Instrumentation	D
-MIT MRL	Instrumentation	D
-MIT CMSE	Instrumentation	D
-MIT ISN	Instrumentation	D
-Tufts Machine Room	Instrumentation	D
-External Group:MIT_D	Software	D
+Collaborator	Collaborator organizational relationship	Collaborator Role	interview
+NSF	external	Funder	A
+Group	lab	Co-researcher	A
+USC	external	Co-researcher	A
+MIT MRL	organization	Instrumentation	A
+USCB	external	Co-researcher	B
+Unknown	unknown	Funder	B
+Group	lab	Co-researcher	B
+MIT Nano	organization	Instrumentation	B
+External Group:MIT_B	organization	Instrumentation	B
+MIT MRL	organization	Instrumentation	B
+MIT DMSE polishing lab	organization	Instrumentation	B
+ONR	external	Funder	C
+MIT	organization	Co-researcher	C
+External Group:MIT_C	organization	Instrumentation	C
+External Group:non-MIT_C	external	Sample provider	C
+MIT ISN	organization	Instrumentation	C
+MIT MRL	organization	Instrumentation	C
+MURI	external	Funder	D
+ONR	external	Funder	D
+UMD	external	Instrumentation	D
+UW	external	Prospective Researcher	D
+Group	lab	Co-researcher	D
+Group - Past	lab	Co-researcher	D
+Harvard CNS (Center of Nanoscale Science)	external	Instrumentation	D
+MIT MRL	organization	Instrumentation	D
+MIT CMSE	organization	Instrumentation	D
+MIT ISN	organization	Instrumentation	D
+Tufts Machine Room	external	Instrumentation	D
+External Group:MIT_D	external	Software	D
