@@ -26,7 +26,7 @@ address:
     address: Cambridge, MA 02139
 #author_summary: "Ye Li, Sara Wilson & Micah Altman  \n"
 bibliography: ["references.bib"]
-abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices. \n In this research we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice with respect to replicability, data-sharing, and attribution. By combining interviews, document review, and digital forensics we systematically reconstruct the workflows underpinning four research projects. \n We then apply information graph analysis and computer-assisted retrospective auditing identify where critical research  information is unavailable or at risk. \n  We find that while curation practices in this leading lab protect against computer and disk failure, they are not sufficient to ensure reproducibility or correct attribution of work -- especially where a group member withdraws before project completion.   \n We conclude with recommendations for adjustments to MSE data curation practices to promote robustness and transparency. "
+abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices. \n In this research we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice with respect to replicability, data-sharing, and attribution. By combining interviews, document review, and digital forensics we systematically reconstruct the workflows underpinning four research projects. \n We then apply information graph analysis and computer-assisted retrospective auditing identify where critical research  information is unavailable or at risk. \n  We find that while curation practices in this leading lab protect against computer and disk failure, they are not sufficient to ensure reproducibility or correct attribution of work -- especially where a group member withdraws before project completion.   \n We conclude with recommendations for adjustments to MSE data curation practices to promote robustness and transparency by adding lightweight automated file-level auditing and automated data transfer processes. "
 output:
   html_document:
     toc: yes
@@ -166,7 +166,7 @@ also revealed a similar level of irreproducible rate [@park2017].
 Experimental materials science typically does not generate large quantities of data through coordinated or collective
 studies compared to fields such as geology, genomics, and some disciplines within economics. In MSE, experimentalists
 generate materials property data in their 'small labs' individually and has not developed a shared practice of data
-sharing as in many other 'big data' disciplines. Moreover, gap of experimental data availability has been identified as
+sharing as in many other 'big data' disciplines. Moreover, gaps in experimental data availability has been identified as
 a barrier for computational materials science since the early 1980's [@westbrook1983] and remains a significant obstacle
 to progress.
 
@@ -263,7 +263,18 @@ to ensure appropriate attribution of work.
 
 ## Overview
 
-![Fig 1: Overview of data sources and methods](figs/Coding.svg){width="625"}
+Our approach, as illustrated in Figure 1, employs a purposive case-study design. We select a leading MSE research lab
+and interviews lab members in detail about the completion of their most important research project -- including each
+step taken, and all collaborators involvedrece. We code the collected interview data to create a standardized
+description of each task conducted for the project step, and use this to construct a formal workflow process graph. By
+tracing across and within these graphs, we characterize overall patterns of collaboration and information flow -- and
+evaluate the extent to which information shared with the group as a whole is sufficient for replication and attribution.
+
+![Fig 1: Overview of data sources and methods](figs/Coding.svg){alt="Fig 1: Overview of data sources and methods"
+width="625"}
+
+We supplement this with a review of lab documentation, and of the labs digital repository. Throgh manual coding of the
+documentation we can extract rules that can be tested using extracted file-level metadata (digital forensics).
 
 ## Interviewee Selection
 
@@ -429,6 +440,9 @@ recent_files.tbl %<>% rowwise() %>% mutate(
   img_deposit_lag = (client_modified - media_info.metadata.time_taken),
   path_deposit_lag = as.numeric(as_date(client_modified) - path_date)
 )  
+recent_files.tbl %<>% rowwise() %>% mutate(client_date=as_date(client_modified),
+                             cp_date_match = (client_date-path_date)) %>% 
+                            ungroup()
 
 sum_lag.tbl <-
   recent_files.tbl %>% 
@@ -463,6 +477,11 @@ REP_v_plag75days  <-
   sump_lag.tbl[[1, "numeric.p75"]] %>% round(digits = 0) 
 REP_v_plag50days <-
   sump_lag.tbl[[1, "numeric.p50"]] %>% round(digits = 0) 
+
+time_consistency.df <- recent_files.tbl %>% count(consistency=sign(cp_date_match)) %>% drop_na() %>% mutate(p=n/sum(n))
+
+TD_postdate <- time_consistency.df[[1,"n"]]
+TD_accurate_p <- round(time_consistency.df[[2,"p"]] * 100,digits=1)
 ```
 
 ```{r forensics-timeseries}
@@ -1036,7 +1055,7 @@ We employed four strategies to evaluate the consistency of recalled practices wi
 The results are summarized below
 
 | Documented Procedures      | Inconsistencies with Practice                                                                                                                                                           |
-|-----------------------------------|-------------------------------------------------------------------------------------|
+|----------------------------------|--------------------------------------------------------------------------------------|
 | *Information sharing*      | Practices are predominantly consistent with documentation, although occasional lapses occur.                                                                                            |
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                            |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data and sample can often be identified by human inspection of the file and directory name. |
@@ -1045,7 +1064,9 @@ The results are summarized below
 
 The largest deviation with formal documented practice is in the area of information organization. Of the
 `r REP_n_recent_files` deposited over two years of proximity, less than a quarter (`r REP_p_all_meta`%) provided could
-be readily assigned a collection date, researcher, and instrument.
+be readily assigned a collection date, researcher, and instrument. Furthermore, where collection dates were assigned
+they were often inconsistent with the time stamps provided by the researcher's computers when they were provided to
+dropbox ( `r 100-TD_accurate_p` % ) .
 
 The **Assessment** section below, provides more detail on information sharing.
 
