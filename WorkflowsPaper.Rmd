@@ -129,26 +129,26 @@ more recently, there have been high-profile calls and initiatives by research so
 scientific practice and data more open and transparent [@wilkinson2016,@opensci2018]and to develop systematic
 attribution standards and [@mcnutt2018] practices for contributors to scientific publications and outputs.
 
-Stakeholders in science are increasingly coming to the realization that the reproducibility of a scientific discipline
-needs to be empirically evaluated, and not simply assumed. A hallmark study by the National Academies
+Stakeholders in science are increasingly realizing that a scientific discipline's reproducibility needs to be
+empirically evaluated, not simply assumed. A hallmark study by the National Academies
 [@ReproducibilityReplicabilityScience2019] reviewing the state of knowledge on scientific transparency finds that the
 evidence base of non-replicability across all science and engineering research is incomplete: Scientific practices of
 replication are neither sufficiently consistent nor sufficiently enough to make confident statements about the rate of
-replicability in most fields. However, the major empirical studies of replication failure that have been conducted in
-the natural, clinical, and social sciences have yielded rates of replication failure that range from somewhat lower than
-20% to higher than 80%. Further, the report found that there is an uneven awareness of issues related to replicability
-practices and awareness across fields and within fields of science and engineering.
+replicability in most fields. However, the major empirical studies of replication failure conducted in the natural,
+clinical, and social sciences have yielded replication failure rates ranging from somewhat lower than 20% to higher than
+80%. Further, the report found an uneven awareness of issues related to replicability practices and awareness across
+fields and within fields of science and engineering.
 
-Similarly, although many fields have widespread norms or even stated policies on research transparency (e.g. making data
-available after publication) and appropriate attribution of contributors, these policies are unreliable predictors of
-practice. See for example [@tenopir2011,@savage2009] Empirical evaluation is needed to understand how and where these
-practices are followed, and what effects they yield.
+Similarly, although many fields have widespread norms or even stated policies on research transparency (e.g., making
+data available after publication) and appropriate attribution of contributors, these policies are unreliable predictors
+of practice. See, for example, [@tenopir2011,@savage2009]. Empirical evaluation is needed to understand how and where
+these practices are followed and what effects they yield.
 
 ### Studies of Practices in Experimental MSE
 
-Schechtman's Nobel-winning discovery of quasi-crystals stands a particularly occurrence (and eventual resolution) of the
-classic "file-drawer" problem [@timmer2011] that is highlighted by open-science advocates --- but this is one
-illustration, with a happy ending, and cannot establish a pattern. There are few published studies that describe or
+Schechtman's Nobel-winning discovery of quasi-crystals stands as a particular occurrence (and eventual resolution) of
+the classic "file-drawer" problem [@timmer2011] that is highlighted by open-science advocates --- but this is one
+illustration with a happy ending, and cannot establish a pattern. There are few published studies that describe or
 evaluate practices related to replication, transparency, and attribution in Materials Science and Engineering (MSE).
 
 A more recent study suggests a rosier picture -- an analysis of retractions in MSE publications finds a relatively low
@@ -211,7 +211,8 @@ More recently, as a paradigm shift rooted in exponential growth of computing pow
 intelligence (AI) based predictions and experimental automation via robotics are explored and examined to accelerate
 materials discovery with the promise of replacing the manual and human-intensive material discovery process
 [@pyzer-knapp2022]. For example, a technology roadmap was outlined to articulate the hardware and software
-infrastructure requirements as well as to demonstrate a re-imagined role of human as ensuring data being properly managed, aggregated, standardized and shared  [@delgado-licona2023]. The analysis of the potential to apply accelerated
+infrastructure requirements as well as to demonstrate a re-imagined role of human as ensuring data being properly
+managed, aggregated, standardized and shared [@delgado-licona2023]. The analysis of the potential to apply accelerated
 materials discovery in clean energy highlighted insufficient experimental datasets for AI model training as a limitation
 for clean energy as a relatively new technology [@maleki2022] .
 
@@ -270,7 +271,7 @@ task conducted for the project step, and use this to construct a formal workflow
 within these graphs, we characterize overall patterns of collaboration and information flow -- and evaluate the extent
 to which information shared with the group as a whole is sufficient for replication
 
-![Fig 1: Overview of data sources and methods](figs/Coding.png){alt="Fig 1: Overview of data sources and methods"}
+![Fig 1: Overview of data sources and methods](figs/Coding.png)
 
 We supplement this with a review of lab documentation, and of the labs digital repository. Through manual coding of the
 documentation we can extract rules that can be tested using extracted file-level metadata (digital forensics).
@@ -1054,7 +1055,7 @@ We employed four strategies to evaluate the consistency of recalled practices wi
 The results are summarized below
 
 | Documented Procedures      | Inconsistencies with Practice                                                                                                                                                           |
-|----------------------------------|--------------------------------------------------------------------------------------|
+|-----------------------------------|-------------------------------------------------------------------------------------|
 | *Information sharing*      | Practices are predominantly consistent with documentation, although occasional lapses occur.                                                                                            |
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                            |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data and sample can often be identified by human inspection of the file and directory name. |
