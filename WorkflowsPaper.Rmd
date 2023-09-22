@@ -416,6 +416,7 @@ as all of the code necessary to reproduce all figures and tables.)
 ## Digital Forensics
 
 ```{r file-forensics-analysis,  echo=!doc_is_pdf}
+recent_files.tbl <- read_tsv("Data-deidentified/recent_files.tsv", guess_max=Inf)
 recent_files.tbl %<>% rowwise() %>% mutate(
   img_deposit_lag = (client_modified - media_info.metadata.time_taken),
   path_deposit_lag = as.numeric(as_date(client_modified) - path_date)
@@ -478,13 +479,24 @@ tmodel <-
   model(STL(count ~ season("1 year")))
 
 fa1.plot <-
-  components(tmodel) %>% autoplot() + labs(title = "", color = "") +
-  plot_annotation(title = "Figure A1. Trends in file creation in group storage.",   theme = theme_economist())
+ components(tmodel)%>% 
+  autoplot() 
 ```
 
 Through the interview process, we determined that the lab used a shared folder in Dropbox as its official repository for
 collected data and documentation. With permission from the PI, we cloned a snapshot of the repository contents, and
-collected all of the file-system metadata for a digital forensic analysis.
+collected all of the file-system metadata for use in a digital forensic analysis. For consistency with lab policies, and
+with the timeline of the projects we evaluated, we restricted our analysis to files deposited between January of 2019
+and January of 2022.
+
+Overall deposit patterns demonstrated that the repository was actively used -- with rates of deposit varying seasonally.
+(See Appendix). In total information was collected for `nrow(recent_files.tbl)` files -- including file names, paths,
+content-hashes, client-side-modification time, deposit time. For image files, which are a common set of raw data format
+used in this lab, we obtained additional internal timestamp and content metdata. Finally, many files used a naming
+convention to embed additional information such as creation date, creating user, and creating instrument -- we used
+regular expression based cleaning and parsing to extract this information where possible. This set of information was
+then used to check for inconsistencies with documented information organization practices -- as described below in the
+results section.
 
 ## Post Analysis Validation
 
@@ -508,7 +520,6 @@ collaborator.tbl <- read_tsv("Data-deidentified/collaborator.tsv", guess_max=Inf
 workflows.tbl <- read_tsv("Data-deidentified/workflows.tsv", guess_max=Inf)
 meta_storage.tbl <- read_tsv("Data-deidentified/meta_storage.tsv", guess_max=Inf)
 meta_instrument.tbl <- read_tsv("Data-deidentified/meta_instrument.tsv", guess_max=Inf)
-recent_files.tbl <- read_tsv("Data-deidentified/recent_files.tsv", guess_max=Inf)
 ```
 
 ```{r workflow-graph, include=FALSE, echo=FALSE}
@@ -722,7 +733,7 @@ phase inform how the synthesis process for the next iteration will be tuned. The
 record observations. Metadata from equipment is recorded in the group Dropbox. Pre- and post-processed data are saved to
 the group Dropbox.
 
-```{r workflow-a,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+```{r workflow-a,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
 
 
 workflow_graph_by_interviewee("A",2)
@@ -735,7 +746,7 @@ used for recording measurements on lab tools that are shared, as to maintain a c
 Professor). The group Dropbox is used for saving raw data that is directly output from instruments. Post-processed data
 is saved to a personal Dropbox.
 
-```{r workflow-b,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+```{r workflow-b,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
 
 workflow_graph_by_interviewee("B",2)
 ```
@@ -746,7 +757,7 @@ iterative, as the transformed sample is characterized. A personal OneNote notebo
 OneNote is manually synchronized to the group LabArchives notebook. In the group Dropbox, they record all sample notes,
 raw data, and analyzed data.
 
-```{r workflow-c,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+```{r workflow-c,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
 
 
 workflow_graph_by_interviewee("C",2)
@@ -757,7 +768,7 @@ analysis, and simulation. A personal LabArchives notebook is used to write detai
 measurements from equipment from the synthesis process. The group Dropbox is used to save equipment metadata and only
 raw or lightly processed data from characterization. A personal Dropbox is used for processed data.
 
-```{r workflow-d,  echo=!doc_is_pdf, fig.width=7in,fig.height=7in}
+```{r workflow-d,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
 
 
 workflow_graph_by_interviewee("D",2)
@@ -813,14 +824,14 @@ workflows.tbl %>%
   ggplot(aes(fct_rev(fct_infreq(`Storage Type`)),fill=`Step Automation`)) + geom_bar() +labs(y="",x="",caption="Actions data is typically stored in cloud, facily, or ELN .") + theme(legend.position="none") +coord_flip() -> p1c
 
 p1b/(p1a| p1c) +  plot_annotation(
-  title = 'Figure 1: Selected characteristics of the workflow steps',
+  title = 'Figure 3: Selected characteristics of the workflow steps',
   subtitle = 'Summarizes type of action described in each step, proximate data source, and level of automation.',
   caption = paste("(N =",nrow(workflows.tbl)," workflow steps)",sep=""),
   tag_levels = 'a',
     tag_prefix = "(",
     tag_suffix = ")",
   theme = theme_economist()
-) -> p1full
+) -> p3full
 
 p3full %>% ggsave(filename = "figs/fig3.png" , width=7, dpi=300)
 p3full
@@ -908,13 +919,13 @@ workflows.tg %>%
   title = "Figure 4: Project Information Exchange.",
   subtitle = str_wrap("Implicit and indirect information exchange occurs frequently within projects, but does not connect projects."),
   theme = theme_economist()
-  ) -> p3
+  ) -> p4
 
-p4 %>% ggsave(filename="figs/fig3.png" , width=7, dpi=300)
+p4 %>% ggsave(filename="figs/fig4.png" , width=7, dpi=300)
 
 p4
 workflows.tg %>%
-  graph_table(c("subsequence","step"),c("information:shared_context","information:shared_input","information:input_output"),"Table A2:  Information Exchange Graph Statistics") -> ta2.gt
+  graph_table(c("subsequence","step"),c("information:shared_context","information:shared_input","information:input_output"),"Table A1:  Information Exchange Graph Statistics") -> ta1.gt
 ```
 
 Collaboration networks (Figure 4) are also partitioned by project/workflow. The size of the network varies substantially
@@ -926,7 +937,7 @@ collaborator.tg %>%
   mutate(node_label=ifelse(node_type=="project",name,"")) %>%
   ggraph("stress") +
     geom_edge_link(aes(edge_linetype=edge_type)) +
-    geom_node_point(aes(shape=node_type,size=node_type,color=type), 
+    geom_node_point(aes(shape=as.factor(node_type),size=as.factor(node_type),color=type), 
                     show.legend=c(color=TRUE,shape=FALSE))+
     geom_node_text(aes(label=node_label)) +
    labs(title="") +
@@ -936,14 +947,14 @@ collaborator.tg %>%
   )  -> p5
 
 p5
-p5 %>% ggsave(filename="figs/fig5.png" , width=7, dpi=300)
+suppressMessages(p5 %>% ggsave(filename="figs/fig5.png" , width=7, dpi=300))
 
 
 
 collaborator.tg %>%
   graph_table(collaborator.tg %>% activate(nodes) %>% as_tibble() %>% pull(node_type) %>% unique(),
               collaborator.tg %>% activate(edges) %>% as_tibble() %>% pull(edge_type) %>% unique(),
-              "Table A3: Collaboration Network") -> ta3.gt
+              "Table A2: Collaboration Network") -> ta2.gt
 ```
 
 ## Lab Practices
@@ -996,7 +1007,7 @@ Information Organization
 
 -   P6. Samples are required to be named consistently with a given scheme including `YYMMDD` and a serial number.
 
-### Consistency of Documented vs. Recalled Practices
+### Consistency of Documented vs. Recalled and Observed Practices
 
 We employed four strategies to evaluate the consistency of recalled practices with documented practices:
 
@@ -1480,8 +1491,7 @@ The interview protocol and coding disctionary used in the study are shown in App
 ```{r supplementary-tables, echo=!doc_is_pdf}
 ta1.gt
 ta2.gt
-ta3.gt
-fa1.plot
+fa1.plot + plot_annotation(title = "Figure A1. Trends in file creation in group storage.",   theme = theme_economist())
 ```
 
 # Data Availability
