@@ -38,13 +38,13 @@ output:
     toc_float:
       collapsed: yes
       smooth_scroll: yes
+  rticles::plos_article:
+    fig_width: 5
+    fig_height: 5
   pdf_document:
     pandoc_args:
       - '--lua-filter=scholarly-metadata.lua'
       - '--lua-filter=author-info-blocks.lua' 
-  rticles::plos_article:
-    fig_width: 5
-    fig_height: 5
 params:
   doc_refresh_data:
     value: no
@@ -187,12 +187,12 @@ emphasized that the Division of Matierals Research (DMR) expected its awardees t
 Data resources can grow through open-science practices such as sharing data generated across the research lifecycle, but
 experimental materials science lacks the norms, standards, and tools to make this widespread, especially for academic
 labs. There have been notable efforts to develop infrastructure, standards, and tools to enable experimental
-reproducible workflow management and data sharing in materials science [@hill2018]. For example, the 4Ceed project
-[@nguyen2017] developed a cloud frameworks and associated curation services for real-time capturing of materials data
-from instruments based on a survey they carried out among experimentalists [@userstu2016]. The Materials Data Facility
-(MDF) service launched in 2016 [@blaiszik2016] was designed to provide an interconnection point for data sharing,
-discovery, access, and analysis. The MDF (Material Science Data Facility), sponsored by the National Institute of
-Standards (NIST) and the Center for Hierarchical Materials Design (CHIMaD), now hosts about 578 datasets (116
+reproducible workflow management and data sharing in materials science [@hill2018] [@himanen2019] . For example, the
+4Ceed project [@nguyen2017] developed a cloud frameworks and associated curation services for real-time capturing of
+materials data from instruments based on a survey they carried out among experimentalists [@userstu2016]. The Materials
+Data Facility (MDF) service launched in 2016 [@blaiszik2016] was designed to provide an interconnection point for data
+sharing, discovery, access, and analysis. The MDF (Material Science Data Facility), sponsored by the National Institute
+of Standards (NIST) and the Center for Hierarchical Materials Design (CHIMaD), now hosts about 578 datasets (116
 experimental datasets) and indexes over 970,000 records of Materials data from other repositories as of December 2021.
 Other recent efforts include infrastructure for a federated registry of information resources for materials science
 [@plante2021] ; a proposed controlled vocabulary and metadata schema for materials discover [@medina-smith2021]; and a
@@ -206,6 +206,14 @@ science, engineering, and astronomy that follows FAIR principles [@fair-di]. FAI
 (<https://nomad-lab.eu/>) in 2014 and has since been developing support to data managment and sharing. Their recent
 FAIRmat hands-n Tutorial Series [@fair-di] is designed to provide connections between the existing infrastructure and
 researchers' daily practices.
+
+More recently, as a paradigm shift rooted in exponential growth of computing power, integrated systems of Artificial
+intelligence (AI) based predictions and experimental automation via robotics are explored and examined to accelerate
+materials discovery with the promise of replacing the manual and human-intensive material discovery process
+[@pyzer-knapp2022]. For example, a technology roadmap was outlined to articulate the hardware and software
+infrastructure requirements as well as to demonstrate a re-imagined role of human as ensuring data being properly managed, aggregated, standardized and shared  [@delgado-licona2023]. The analysis of the potential to apply accelerated
+materials discovery in clean energy highlighted insufficient experimental datasets for AI model training as a limitation
+for clean energy as a relatively new technology [@maleki2022] .
 
 Notwithstanding these particular efforts and the overall progress made in the area of developing tools standards and
 practices, the adoption of these infrastructure and tools by individual "small" labs remains limited. No direct
@@ -1028,7 +1036,7 @@ We employed four strategies to evaluate the consistency of recalled practices wi
 The results are summarized below
 
 | Documented Procedures      | Inconsistencies with Practice                                                                                                                                                           |
-|---------------------------------|---------------------------------------------------------------------------------------|
+|-----------------------------------|-------------------------------------------------------------------------------------|
 | *Information sharing*      | Practices are predominantly consistent with documentation, although occasional lapses occur.                                                                                            |
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                            |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data and sample can often be identified by human inspection of the file and directory name. |
