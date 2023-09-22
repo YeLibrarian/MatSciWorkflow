@@ -152,11 +152,11 @@ illustration, with a happy ending, and cannot establish a pattern. There are few
 evaluate practices related to replication, transparency, and attribution in Materials Science and Engineering (MSE).
 
 A more recent study suggests a rosier picture -- an analysis of retractions in MSE publications finds a relatively low
-rate (0.03%) [@coudert2019]. However, while a high retraction rate is a signal of problems, generaly most non-replicable
-research is not retracted -- so a low retraction rate does not strongly suggest replicability. Another recent study,
-examining data sharing practices in small MSE labs [@wilson2019a] revealed that while many researchers in materials
-science embrace the idea of open science, reproducible research, and data sharing, they are frustrated with the
-inadequate infrastructure, tools, and practice guidelines. This finding suggests the potential for gaps between
+rate (0.03%) [@coudert2019]. However, while a high retraction rate is a signal of problems, generally most
+non-replicable research is not retracted -- so a low retraction rate does not strongly suggest replicability. Another
+recent study, examining data sharing practices in small MSE labs [@wilson2019a] revealed that while many researchers in
+materials science embrace the idea of open science, reproducible research, and data sharing, they are frustrated with
+the inadequate infrastructure, tools, and practice guidelines. This finding suggests the potential for gaps between
 aspiration (for reproducibility, openness, etc.) and practice. Perhaps most concerning, however, is a recent set of case
 studies [@han2019a] in published in the *Annual Review of Chemical and Molecular Engineering* that found a high (20%)
 rate of reproducibility failure in the two research areas, the properties of metal-organic frameworks (MOFs) and
@@ -212,9 +212,9 @@ practices, the adoption of these infrastructure and tools by individual "small" 
 solutions have been provided for individual labs to streamline their workflows and efficiently prepare their data for
 sharing throughout the research lifecycle. Instead, these labs perform their work using informal sociotechnical
 workflows that combine a mixture of documented procedures, undocumented conventions, semi-automated tools, and manual
-processes. In this research we elicit the set of informal workflows operating within a top material science lab,
+processes. In this research, we elicit the set of informal workflows operating within a top material science lab,
 document and describe these using a formal workflow graph notation, and analyze these workflows using both qualitative
-analysis and matrhematical graph analysis.
+analysis and mathematical graph analysis.
 
 ## Research Questions {#ResearchQuestions}
 
@@ -240,35 +240,34 @@ answer the following research questions.
 5.  To what extent are workflow data, outputs and documentation sufficient to describe responsibility (or support
     attribution) for published results?
 
-This study focus on practices within the research group, for a number of reasons. First, internal data management is a
+# Data and Methods
+
+## Overview
+
+This study focuses on practices within the research group, for a number of reasons. First, internal data management is a
 prerequisite for external data sharing and transparency. If research information created by one research becomes
 unavailable, uninterpretable, or irreproducible for a close team member, there is little hope it can be made
 meaningfully available for external reuse and review. Second, MSE relies in large part on internal processes to
 guarantee replicability -- there are no formal processes for external validation, systematic studies of replicability
 conducted across the field, nor systematic reporting guidelines for reporting failures. Further, null results and those
 deemed uninteresting may end up in the file-drawer, and thus not made available for any external examination. Moreover,
-even published results that are of sufficient commercial value for an enterprise to attempt them in production may fail
-, and be discared without any subsequent reporting. Third, similarly, MSE relies almost entirely on internal processes
-to ensure appropriate attribution of work.
-
-# Data and Methods
-
-## Overview
+even published results that are of sufficient commercial value for an enterprise to attempt them in production may fail,
+and be discarded without any subsequent reporting. Third, similarly, MSE relies almost entirely on internal processes to
+ensure appropriate attribution of work.
 
 Our approach, as illustrated in Figure 1, employs a purposive case-study design. We select a leading MSE research lab
-and interviews lab members in detail about the completion of their most important research project -- including each
-step taken, and all collaborators involvedrece. We code the collected interview data to create a standardized
-description of each task conducted for the project step, and use this to construct a formal workflow process graph. By
-tracing across and within these graphs, we characterize overall patterns of collaboration and information flow -- and
-evaluate the extent to which information shared with the group as a whole is sufficient for replication and attribution.
+and interview lab members in detail about the completion of their most important research project -- including each step
+taken, and all collaborators involved. We code the collected interview data to create a standardized description of each
+task conducted for the project step, and use this to construct a formal workflow process graph. By tracing across and
+within these graphs, we characterize overall patterns of collaboration and information flow -- and evaluate the extent
+to which information shared with the group as a whole is sufficient for replication
 
-![Fig 1: Overview of data sources and methods](figs/Coding.svg){alt="Fig 1: Overview of data sources and methods"
-width="625"}
+![Fig 1: Overview of data sources and methods](figs/Coding.png){alt="Fig 1: Overview of data sources and methods"}
 
-We supplement this with a review of lab documentation, and of the labs digital repository. Throgh manual coding of the
+We supplement this with a review of lab documentation, and of the labs digital repository. Through manual coding of the
 documentation we can extract rules that can be tested using extracted file-level metadata (digital forensics).
 
-## Interviewee Selection
+## Case and Interviewee Selection
 
 The use of 'small lab' is common in the literature, but often used unaccompanied by a precise definition. Within this
 paper we use the term 'small lab' to refer to a set of researchers that: (a) self-identified as research collective (b)
@@ -277,7 +276,7 @@ research agenda, design, and methods (d) contains under twenty people, and (e) c
 
 Although it is not possible to precisely determine the number of 'small labs' in science generally because no
 comprehensive survey of research groups exist. However past research into research groups size in selected disciplines
-and countries ( e.g [\@cook2015,\@brandt2012,\@qurashi1984,\@seglen2000] ) suggest that 'small' research groups are a
+and countries ( e.g[@cook2015; @brandt2021; @qurashi1984; @seglen2000] ) suggest that 'small' research groups are a
 common or the predominant form of organization within the natural and applied sciences.
 
 With respect to MSE, the total number of research groups is unknown. However, public rankings of universities establish
@@ -311,7 +310,7 @@ including a group Electronic Lab Notebook (ELN) in LabArchives, a group Dropbox 
 all the cloud-based storage and services are provided to the group via MIT campus-wide site licenses. Protocol for
 saving and sharing information is specified in a group manual, which all researchers in the group are encouraged to
 follow for both the group repositories and their personal data storage systems. In this way, this lab is representative
-of good practices for data sharing, as individual data from one researcher is, ideally, stored in a format that is
+of good practices for data-sharing, as individual data from one researcher is, ideally, stored in a format that is
 comprehensible to and a location that is accessible by all members of the lab. Consequently, reproducibility of research
 is possible in the absence of the originator of the research.
 
