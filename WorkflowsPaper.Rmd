@@ -26,11 +26,18 @@ address:
     address: Cambridge, MA 02139
 #author_summary: "Ye Li, Sara Wilson & Micah Altman  \n"
 bibliography: ["references.bib"]
-abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices, and the extent to which they promote support, trust in, and transparency of the published research.
+abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices and the extent to which they promote trust in, and transparency of, the published research.
 In this research, we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice concerning replicability, data-sharing, and attribution. We systematically reconstruct the workflows underpinning four research projects by combining interviews, document review, and digital forensics. We then apply information graph analysis and computer-assisted retrospective auditing to identify where critical research information is unavailable or at risk. 
 We find that while curation practices in this leading lab protect against computer and disk failure, they are insufficient to ensure reproducibility or correct attribution of work -- especially when a group member withdraws before project completion.   
-We conclude with recommendations for adjustments to MSE data curation practices to promote trustworthiness and transparency by adding lightweight automated file-level auditing and automated data transfer processes. "
+We conclude with recommendations for adjustments to MSE data curation practices to promote trustworthiness and transparency by adding lightweight automated file-level auditing and automated data transfer processes."
 output:
+  pdf_document:
+    pandoc_args:
+      - '--lua-filter=scholarly-metadata.lua'
+      - '--lua-filter=author-info-blocks.lua' 
+  rticles::plos_article:
+    fig_width: 5
+    fig_height: 5
   html_document:
     toc: yes
     toc_depth: 2
@@ -41,13 +48,6 @@ output:
     toc_float:
       collapsed: yes
       smooth_scroll: yes
-  rticles::plos_article:
-    fig_width: 5
-    fig_height: 5
-  pdf_document:
-    pandoc_args:
-      - '--lua-filter=scholarly-metadata.lua'
-      - '--lua-filter=author-info-blocks.lua' 
 params:
   doc_refresh_data:
     value: no
@@ -519,12 +519,12 @@ with the timeline of the projects we evaluated, we restricted our analysis to fi
 and January of 2022.
 
 Overall, deposit patterns demonstrated that the repository was actively used -- with deposit rates varying seasonally.
-(See Appendix). All information was collected for `nrow(recent_files.tbl)` files -- including file names, paths, content
-hashes, client-side-modification time, and deposit time. For image files, which are a common set of raw data formats
-used in this lab, we obtained additional internal timestamps and content metadata. Finally, many files used a naming
-convention to embed additional information such as creation date, creating user, and creating instrument -- we used
-regular expression-based cleaning and parsing to extract this information where possible. This information set was then
-used to check for inconsistencies with documented information organization practices -- as described below in the
+(See Appendix). All information was collected for `r nrow(recent_files.tbl)` files -- including file names, paths,
+content hashes, client-side-modification time, and deposit time. For image files, which are a common set of raw data
+formats used in this lab, we obtained additional internal timestamps and content metadata. Finally, many files used a
+naming convention to embed additional information such as creation date, creating user, and creating instrument -- we
+used regular expression-based cleaning and parsing to extract this information where possible. This information set was
+then used to check for inconsistencies with documented information organization practices -- as described below in the
 results section.
 
 ## Post Analysis Validation
@@ -1064,8 +1064,10 @@ The results are summarized below
 The most significant deviation with formal documented practice is in the area of information organization. Of the
 `r REP_n_recent_files` deposited over two years of proximity, less than a quarter (`r REP_p_all_meta`%) provided could
 be readily assigned a collection date, researcher, and instrument. Furthermore, where collection dates were assigned,
-they were often inconsistent with the time stamps provided by the researcher's computers when they were delivered to
-dropbox ( `r 100-TD_accurate_p` % ) .
+they often ( `r 100-TD_accurate_p` % ) pre-dated -- and in rare cases, post-dated -- the modification time stamps
+provided by the researcher's computers when they were delivered to Dropbox (or by the image creation software, where
+applicable). In the absence of more systematic processes for maintaining the provenance and authenticity of digital
+records, his discrepancy raises the possibility that data files could have been modified after collection.
 
 The **Assessment** section below provides more detail on information sharing.
 
