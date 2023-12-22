@@ -1,66 +1,82 @@
 ---
 title: "Reproducible and Attributable Materials Science Workflows"
-institute: 
-  - first: MIT Libraries, Massachusetts Institute of Technology
-  - second: Department of Mechnical Engineering, Massachusetts Institute of Technology
-  - third: Center for Research in Equitable and Open Scholarship, Massachusetts Institute of Technology
 author:
-  - name: Ye Li
-    email: yel@mit.edu
-    affiliation: MIT Libraries, Massachusetts Institute of Technology
-    institute: first
-    correspondence: "yes"
-    corresponding: yel@mit.edu 
-  - name: Sara Wilson
-    email: slwilson@mit.edu
-    affiliation: Department of Mechanical Engineering, Massachusetts Institute of Technology
-    institute: second
-  - name: Micah Altman
-    email: escience@mit.edu
-    affiliation: Center for Research in Equitable and Open Scholarship, Massachusetts Institute of Technology
-    institute: third
-    correspondence: "yes"
-    corresponding: escience@mit.edu
-address:
-  - code: Massachusetts Institute of Technology
-    address: Cambridge, MA 02139
-#author_summary: "Ye Li, Sara Wilson & Micah Altman  \n"
-bibliography: ["references.bib"]
-abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices and the extent to which they promote trust in, and transparency of, the published research.\n In this research, we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice concerning replicability, data-sharing, and attribution. We systematically reconstruct the workflows underpinning four research projects by combining interviews, document review, and digital forensics. We then apply information graph analysis and computer-assisted retrospective auditing to identify where critical research information is unavailable or at risk. \n We find that while curation practices in this leading lab protect against computer and disk failure, they are insufficient to ensure reproducibility or correct attribution of work -- especially when a group member withdraws before project completion. \n   We conclude with recommendations for adjustments to MSE data curation practices to promote trustworthiness and transparency by adding lightweight automated file-level auditing and automated data transfer processes."
+- name: Ye Li
+  email: yel@mit.edu
+  affiliation: MIT Libraries, Massachusetts Institute of Technology
+  institute: first
+  correspondence: 'yes'
+  corresponding: yel@mit.edu
+- name: Sara Wilson
+  email: slwilson@mit.edu
+  affiliation: Department of Mechanical Engineering, Massachusetts Institute of Technology
+  institute: second
+- name: Micah Altman
+  email: escience@mit.edu
+  affiliation: Center for Research in Equitable and Open Scholarship, Massachusetts
+    Institute of Technology
+  institute: third
+  correspondence: 'yes'
+  corresponding: escience@mit.edu
+institute:
+- first: MIT Libraries, Massachusetts Institute of Technology
+- second: Department of Mechnical Engineering, Massachusetts Institute of Technology
+- third: Center for Research in Equitable and Open Scholarship, Massachusetts Institute
+    of Technology
 output:
-  html_document:
-    toc: yes
-    toc_depth: 2
-    number_section: yes
-    theme: journal
-    highlight: zenburn
-    code_folding: hide
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+  word_document:
+    toc: true
+    toc_depth: '2'
   rticles::plos_article:
     fig_width: 5
     fig_height: 5
   pdf_document:
     pandoc_args:
-      - '--lua-filter=scholarly-metadata.lua'
-      - '--lua-filter=author-info-blocks.lua' 
+    - "--lua-filter=scholarly-metadata.lua"
+    - "--lua-filter=author-info-blocks.lua"
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_section: true
+    theme: journal
+    highlight: zenburn
+    code_folding: hide
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+bibliography: references.bib
+abstract: "While small labs produce much of the fundamental experimental research
+  in material science and engineering. However, little is known about their data curation
+  practices and the extent to which they promote trust in, and transparency of, the
+  published research.\n In this research, we conduct a case study of a leading MSE
+  research lab to characterize the limits of current curation practice concerning
+  replicability, data-sharing, and attribution. We systematically reconstruct the
+  workflows underpinning four research projects by combining interviews, document
+  review, and digital forensics. We then apply information graph analysis and computer-assisted
+  retrospective auditing to identify where critical research information is unavailable
+  or at risk. \n We find that while curation practices in this leading lab protect
+  against computer and disk failure, they are insufficient to ensure reproducibility
+  or correct attribution of work -- especially when a group member withdraws before
+  project completion. \n   We conclude with recommendations for adjustments to MSE
+  data curation practices to promote trustworthiness and transparency by adding lightweight
+  automated file-level auditing and automated data transfer processes."
+address:
+- code: Massachusetts Institute of Technology
+  address: Cambridge, MA 02139
 params:
   doc_refresh_data:
-    value: no
+    value: false
     choices:
-    - yes
-    - no
+    - true
+    - false
   doc_debug:
-    value: no
+    value: false
     choices:
-    - yes
-    - no
+    - true
+    - false
   doc_cache:
-    value: yes
-    choices:
-      -yes
-      -no
+    value: true
+    choices: "-yes -no"
 editor_options:
   markdown:
     wrap: 120
