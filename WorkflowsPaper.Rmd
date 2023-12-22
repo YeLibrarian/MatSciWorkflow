@@ -26,18 +26,8 @@ address:
     address: Cambridge, MA 02139
 #author_summary: "Ye Li, Sara Wilson & Micah Altman  \n"
 bibliography: ["references.bib"]
-abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices and the extent to which they promote trust in, and transparency of, the published research.
-In this research, we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice concerning replicability, data-sharing, and attribution. We systematically reconstruct the workflows underpinning four research projects by combining interviews, document review, and digital forensics. We then apply information graph analysis and computer-assisted retrospective auditing to identify where critical research information is unavailable or at risk. 
-We find that while curation practices in this leading lab protect against computer and disk failure, they are insufficient to ensure reproducibility or correct attribution of work -- especially when a group member withdraws before project completion.   
-We conclude with recommendations for adjustments to MSE data curation practices to promote trustworthiness and transparency by adding lightweight automated file-level auditing and automated data transfer processes."
+abstract: "While small labs produce much of the fundamental experimental research in material science and engineering. However, little is known about their data curation practices and the extent to which they promote trust in, and transparency of, the published research.\n In this research, we conduct a case study of a leading MSE research lab to characterize the limits of current curation practice concerning replicability, data-sharing, and attribution. We systematically reconstruct the workflows underpinning four research projects by combining interviews, document review, and digital forensics. We then apply information graph analysis and computer-assisted retrospective auditing to identify where critical research information is unavailable or at risk. \n We find that while curation practices in this leading lab protect against computer and disk failure, they are insufficient to ensure reproducibility or correct attribution of work -- especially when a group member withdraws before project completion. \n   We conclude with recommendations for adjustments to MSE data curation practices to promote trustworthiness and transparency by adding lightweight automated file-level auditing and automated data transfer processes."
 output:
-  pdf_document:
-    pandoc_args:
-      - '--lua-filter=scholarly-metadata.lua'
-      - '--lua-filter=author-info-blocks.lua' 
-  rticles::plos_article:
-    fig_width: 5
-    fig_height: 5
   html_document:
     toc: yes
     toc_depth: 2
@@ -48,6 +38,13 @@ output:
     toc_float:
       collapsed: yes
       smooth_scroll: yes
+  rticles::plos_article:
+    fig_width: 5
+    fig_height: 5
+  pdf_document:
+    pandoc_args:
+      - '--lua-filter=scholarly-metadata.lua'
+      - '--lua-filter=author-info-blocks.lua' 
 params:
   doc_refresh_data:
     value: no
