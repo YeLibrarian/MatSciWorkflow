@@ -24,16 +24,16 @@ institute:
 - third: Center for Research in Equitable and Open Scholarship, Massachusetts Institute
     of Technology
 output:
-  word_document:
-    toc: true
-    toc_depth: '2'
-  rticles::plos_article:
-    fig_width: 5
-    fig_height: 5
   pdf_document:
     pandoc_args:
     - "--lua-filter=scholarly-metadata.lua"
     - "--lua-filter=author-info-blocks.lua"
+  rticles::plos_article:
+    fig_width: 5
+    fig_height: 5
+  word_document:
+    toc: true
+    toc_depth: '2'
   html_document:
     toc: true
     toc_depth: 2
@@ -106,6 +106,7 @@ doc_is_pdf <- FALSE
 doc_is_pdf <-  try (("pdf_document" %in% rmarkdown::all_output_formats(knitr::current_input())), silent=TRUE)
 doc_is_pdf <- (doc_is_pdf == TRUE) &&
   (opts_knit$get("rmarkdown.pandoc.to")=="latex")
+doc_is_html <- (opts_knit$get("rmarkdown.pandoc.to")=="html")
 
 
 # works in knit, but not in other environments
@@ -449,7 +450,7 @@ detail, and all of the code needed to reproduce all figures and tables.)
 
 ## Digital Forensics
 
-```{r file-forensics-analysis,  echo=!doc_is_pdf}
+```{r file-forensics-analysis,  echo=doc_is_html}
 recent_files.tbl <- read_tsv("Data-deidentified/recent_files.tsv", guess_max=Inf)
 recent_files.tbl %<>% rowwise() %>% mutate(
   img_deposit_lag = (client_modified - media_info.metadata.time_taken),
@@ -499,7 +500,7 @@ TD_postdate <- time_consistency.df[[1,"n"]]
 TD_accurate_p <- round(time_consistency.df[[2,"p"]] * 100,digits=1)
 ```
 
-```{r forensics-timeseries}
+```{r forensics-timeseries,  echo=doc_is_html}
 
 library(tsibble)
 library(lubridate)
@@ -725,7 +726,7 @@ collaborator.tg %<>% bind_edges( collaborator.tbl %>%
 
 ## Workflow Overviews
 
-```{r wkflow-graph-func, echo=!doc_is_pdf, include=FALSE}
+```{r wkflow-graph-func, echo=doc_is_html, include=FALSE}
 workflow_graph_by_interviewee <- function(interviewee,fignum,savefig=TRUE) {
   
   out.plot <- workflows.tg %>%
@@ -773,7 +774,7 @@ characterization, and analysis. The workflow sequence is iterative. Therefore, t
 next iteration's synthesis process will be tuned. They use a personal LabArchives notebook to record observations.
 Metadata from equipment is recorded in the group Dropbox. Pre- and post-processed data are saved to the group Dropbox.
 
-```{r workflow-a,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
+```{r workflow-a,  echo=doc_is_html, fig.width=7,fig.height=7}
 
 
 workflow_graph_by_interviewee("A",2)
@@ -786,7 +787,7 @@ used for recording measurements on lab tools that are shared as to maintain a co
 Professor). The group Dropbox is used for saving raw data directly from instruments. Post-processed data is saved to a
 personal Dropbox.
 
-```{r workflow-b,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
+```{r workflow-b,  echo=doc_is_html, fig.width=7,fig.height=7}
 
 workflow_graph_by_interviewee("B",2)
 ```
@@ -797,7 +798,7 @@ iterative, as the transformed sample is characterized. A personal OneNote notebo
 OneNote is manually synchronized to the group LabArchives notebook. In the group Dropbox, they record all sample notes,
 raw data, and analyzed data.
 
-```{r workflow-c,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
+```{r workflow-c,  echo=doc_is_html, fig.width=7,fig.height=7}
 
 
 workflow_graph_by_interviewee("C",2)
@@ -808,7 +809,7 @@ analysis, and simulation. A personal LabArchives notebook is used to write detai
 measurements from equipment from the synthesis process. The group Dropbox is used to save equipment metadata and only
 raw or lightly processed data from characterization. A personal Dropbox is used for processed data.
 
-```{r workflow-d,  echo=!doc_is_pdf, fig.width=7,fig.height=7}
+```{r workflow-d,  echo=doc_is_html, fig.width=7,fig.height=7}
 
 
 workflow_graph_by_interviewee("D",2)
@@ -850,7 +851,7 @@ correct operation.
 Figure 3 summarizes selected characteristics of the workflow process. This figure reveals that, overall, workflow is
 dominated by manual activities.
 
-```{r  descriptives, echo=!doc_is_pdf, fig.height=7,fig.width=7}
+```{r  descriptives, echo=doc_is_html, fig.height=7,fig.width=7}
 workflows.tbl %>% ggplot(aes(fct_rev(fct_infreq(`Step Type`)),fill=`Step Automation`)) +
   geom_bar() + coord_flip() + labs(y="",x="",caption="Action types are mostly storage or analyze.") + theme(legend.position="none")-> p1a
 workflows.tbl %>% ggplot(aes(fct_rev(fct_infreq(`Step Automation`)),fill=`Step Automation`)) + geom_bar() +
@@ -898,7 +899,7 @@ In the section above, we used the workflows to show the dependencies between ste
 same workflow graphs to derive the dependency graph for each analysis and in conjunction with interview data to derive
 the collaboration networks.
 
-```{r graph-statistics, echo=!doc_is_pdf, include=FALSE}
+```{r graph-statistics, echo=doc_is_html, include=FALSE}
 graph_table <- function(data,ntypes,etypes,glabel) {
   sequence_control.tg <- data %>%
     activate(nodes) %>%
@@ -934,7 +935,7 @@ contrast with the linearity of the process used to produce the information. Furt
 -- through shared context. Information rarely flows through direct input-output. There is no information flow between
 projects.
 
-```{r  flow-graphs-info,  echo=!doc_is_pdf}
+```{r  flow-graphs-info,  echo=doc_is_html}
 # information network
 
 workflows.tg %>%
@@ -970,7 +971,7 @@ workflows.tg %>%
 Collaboration networks (Figure 4) are also partitioned by project/workflow. The size of the grid varies substantially
 across projects.
 
-```{r flow-graphs-collab,  echo=!doc_is_pdf,   warning=FALSE}
+```{r flow-graphs-collab,  echo=doc_is_html,   warning=FALSE}
 collaborator.tg %>%
   activate(nodes) %>%
   mutate(node_label=ifelse(node_type=="project",name,"")) %>%
@@ -1086,7 +1087,7 @@ The **Assessment** section below provides more detail on information sharing.
 
 ## Process Robustness Assessment
 
-```{r data-curation-features,  echo=!doc_is_pdf}
+```{r data-curation-features,  echo=doc_is_html}
     outputs.tbl <- workflows.tg %>%
         activate(nodes) %>%
         as_tibble() %>%
@@ -1154,7 +1155,7 @@ The **Assessment** section below provides more detail on information sharing.
              )
 ```
 
-```{r collaboration-features,  echo=!doc_is_pdf}
+```{r collaboration-features,  echo=doc_is_html}
 
     collabcomparison.tbl <- left_join(by="interview",
         collaborator.tbl %>% group_by(interview) %>%
@@ -1231,7 +1232,7 @@ each output to potential documentation based on the following.
     (semi-)automated and where either log files or generating scripts were also stored. The table below summarizes these
     categories of documentation:
 
-```{r outputs-table,   echo=!doc_is_pdf}
+```{r outputs-table,   echo=doc_is_html}
     outputs.tbl %>%
       filter(object_role != "metadata") %>%
       mutate(object_role=
@@ -1278,7 +1279,7 @@ samples created as part of each scientific workflow), metadata, and analysis res
 graph to trace the flow of these objects across tasks and into storage location. From this set of traces, we can infer
 the content of the designated group storage location post-analysis. The results are summarized in the table below.
 
-```{r storage-table,  echo=!doc_is_pdf}
+```{r storage-table,  echo=doc_is_html}
 
 infosec_exceptions <- outputs.tbl %>% filter(object_role=="raw data") %>%
   select(object,storage_locations) %>%
@@ -1372,7 +1373,7 @@ analysis by e-mail, or an analysis when an external instrument was used.
 As expected from the interviews, many collaborators are omitted from workflow documentation or action altogether. The
 table below summarizes these omissions.
 
-```{r collaboration-table,  echo=!doc_is_pdf}
+```{r collaboration-table,  echo=doc_is_html}
 
     collabcomparison.tbl %>%
       rowwise() %>%
@@ -1530,7 +1531,7 @@ The interview protocol and coding dictionary used in the study are shown in Appe
 
 ## Tables
 
-```{r supplementary-tables, echo=!doc_is_pdf}
+```{r supplementary-tables, echo=doc_is_html}
 ta1.gt
 ta2.gt
 fa1.plot + plot_annotation(title = "Figure A1. Trends in file creation in group storage.",   theme = theme_economist())
