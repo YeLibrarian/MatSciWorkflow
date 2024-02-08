@@ -355,7 +355,7 @@ Two researchers interviewed each graduate student: one served as the interviewer
 The interview audio was recorded and reviewed compared to the transcribed notes post-interview for completeness and
 accuracy.
 
-The interview protocol (see Appendix I) consisted of three sections: Interviewee Background, Top Priority Project
+The interview protocol (see *Appendix I*) consisted of three sections: Interviewee Background, Top Priority Project
 Background, and Top Priority Project Workflow. The protocol was a guideline for the interviewer to construct the most
 complete narrative of each student's workflow. Each question was explicitly asked or indirectly answered through the
 student's response to a different question.
@@ -371,31 +371,7 @@ wide range of existing formal models for provenance and workflow (see, for examp
 these are designed for automated execution, and contain much more detail than is feasible to elicit during a standard
 interview. We thus used a simplified coding approach in which the actions each described action were labeled with their
 objective, task, and subtask, and the sequence, actor, input, output, data source, data target, level of automation,
-type of action, equipment, and methods used were recorded using standardized codes. (See Appendix II.) This tabular data
-was then used to impute collaboration and data-dependency graphs (see the *Results* section below).
-
-The coding of the research workflow was conducted in four phases.
-
-The first phase involved the direct translation of each interviewee's narration. During this phase, only the steps in
-the sequence that were explicitly stated were recorded.
-
-The second phase was an interpretation: the intended meaning of each statement was derived by assessing what the
-researcher implied but did not explicitly state. Each step of the workflow sequence has a series of subsequences that
-occur before and after the main objective. For example, when a physical material is placed in storage, it is implied
-that the next step involving it requires its removal from storage. The first and second phases were completed for all
-interviewees before progressing.
-
-The third phase was inference. The same synthesis, characterization, and analysis techniques were often used across
-interviewees, and each lab member was subject to the same regulations to achieve each objective. Therefore, knowledge of
-one interviewee's workflow can be derived from what is known from another's workflow. This was used mainly for details
-such as the names of analysis software and data output formats.
-
-The fourth phase was extrapolation. The primary coder of this data is a materials scientist who conducted research in
-the same facilities as those used by the interviewees. This familiarity allows for inferring implied steps from the
-workflow narrative that may not have been uncovered during the interview.
-
-No additional assumptions were made during the coding process. Any gaps in information that could not be acquired
-through these four steps were left blank.
+type of action, equipment, and methods used were recorded using standardized codes. (See *Appendix II* for coding method and dictionary.) This tabular data was then used to impute collaboration and data-dependency graphs (see the *Results* section below).
 
 ## Workflow Representation
 
@@ -411,41 +387,9 @@ information flow graphs directly from the workflow process graph. Finally, we ap
 social network analysis [@sharir1981; @horwitz1992; @carrington2005models] to probe questions related to collaboration
 (through analysis of connectivity and centrality), attribution (through comparing the explicitly elicited collaboration
 graph with its workflow-induced counterpart) and replicability (dependency, and subcomponent analysis of the information
-flow graph).
+flow graph). (See Appendix III-A for detailed process)
 
-The process of creating the graph is summarized below. (For replication purposes, we have placed all of the
-de-identified and coded interview data in a public archive, the software code necessary to construct the graph in
-detail, and all of the code needed to reproduce all figures and tables.)
 
--   A node on the graph represents each atomic action ("step") in the workflow. The node documents all of the
-    characteristics of that single action.
-
--   Process dependencies are represented through sequences and sub-sequences linked by "process" edges:
-
-    -   Actions performed by the same person, in a required sequence, for a single goal, and over a continuous period
-        are represented by "sequence" nodes. Edges link each sequence to one or more child sub-sequences.
-
-    -   Actions performed within a sequence (and thus by the same person) and practically simultaneous (they have no
-        natural order and occur during a brief period) are represented by sub-sequences. Edges link sub-sequences to one
-        or more child steps.
-
--   Informational dependencies are represented by augmenting the graph with "informational" edges. An edge is created
-    whenever one of the following conditions holds.
-
-    -   When nodes share common data inputs -- this represents passive information sharing.
-
-    -   When the output of one node is the input for another -- this represents active information sharing.
-
-    -   When a single person conducts nodes during a continuous time (i.e., they are part of the same sequence) -- this
-        represents implicit information sharing.
-
--   Collaboration (attribution) dependencies are represented by augmenting the graph with typed nodes and edges.
-
-    -   Collaborator nodes represent individual or organizational collaborators.
-
-    -   Edges are created from workflows to collaborators when either the collaborator is explicitly referenced in the
-        action (e.g., sending results to a collaborator, receiving samples from a collaborator) or by implication --
-        when the action involves some instrument (or other tool) provided by a collaborator.
 
 ## Digital Forensics
 
@@ -532,7 +476,7 @@ with the timeline of the projects we evaluated, we restricted our analysis to fi
 and January of 2022.
 
 Overall, deposit patterns demonstrated that the repository was actively used -- with deposit rates varying seasonally.
-(See Appendix). All information was collected for `r nrow(recent_files.tbl)` files -- including file names, paths,
+(See *Appendix V*). All information was collected for `r nrow(recent_files.tbl)` files -- including file names, paths,
 content hashes, client-side-modification time, and deposit time. For image files, which are a common set of raw data
 formats used in this lab, we obtained additional internal timestamps and content metadata. Finally, many files used a
 naming convention to embed additional information such as creation date, creating user, and creating instrument -- we
@@ -542,16 +486,8 @@ results section.
 
 ## Post Analysis Validation
 
-After the interviews were completed and their data was coded and analyzed, we validated the results with follow-up
-interviews and a documentation review. In the follow-up interviews, we reviewed with each subject the gaps presented by
-the preliminary analysis, confirmed whether either the subject believed the gap to exist, and addressed the gap in the
-workflow -- through some action not noted in the original interview, the gap was addressed in some other manner. Where
-these discussions pointed to workflow steps that had been omitted during the initial interview, we updated the workflow
-graphs to include these additions.
+See *Appendix III-B* for details on post analysis validation through follow-up interviews and documentation review. 
 
-We also reviewed the content of the existing group storage systems (specifically, names, directories, and file types) to
-characterize data storage patterns per project and compare these to the patterns implied by the workflow analysis. In
-addition, we use content analysis to compare information organization naming practice with the documented lab policies.
 
 # Results
 
@@ -816,7 +752,7 @@ workflow_graph_by_interviewee("D",2)
 
 Note that each workflow is hierarchical -- each project does not interact (there are no connecting branches), and the
 work can be represented as a set of independent, self-contained tasks. (Summary graph statistics are shown in the
-Appendix, Table A1.) Most of the tasks contain only one atomic action. Further, there is a rhythm across each workflow
+*Appendix V, Table A1*.) Most of the tasks contain only one atomic action. Further, there is a rhythm across each workflow
 in which the type of task at each step alternates.
 
 All four interviewees used some instruments or equipment outside their lab, either at a shared facility or in a
@@ -998,7 +934,7 @@ collaborator.tg %>%
 
 ## Lab Practices
 
-### Characterizing Documented Practices
+### Characterizing Documented Data Practices
 
 Our first [research question](#ResearchQuestions) concerns documented practices:
 
@@ -1017,34 +953,8 @@ through interviews. We reviewed these documents both for relevance to the resear
 interpretation of the workflow networks below.
 
 We identified the practices most relevant to data-management and scientific workflow management and grouped them into
-three categories -- information sharing, information security, and information organization:
+three categories -- information sharing, information security, and information organization. (See *Appendix IV* for description of the practices.)
 
-*Information Sharing*
-
--   P1. Shared data storage and management resources include a shared group account in Dropbox, a Group wiki, a shared
-    group lab notebook in LabArchives, and a group Zotero account for sharing literature references.
-
--   P2. All raw data (defined as "data as-recorded by the measurement instruments") must be stored in the group Dropbox
-    folder and should never be modified. All internal lab computers are configured to save data to the group Dropbox
-    folder automatically. Data collected outside the group lab must be manually transferred to the group Dropbox folder.
-    Examples of raw data are JPG from a microscope, TXT from a probe station, or files in a proprietary format such as
-    RAW from XRD.
-
--   P3. Group members can store their analysis results wherever is most convenient.
-
-*Information Security*
-
--   P4. Group members must use MIT Enterprise version of CrashPlan to keep group-owned, and individual computers backed
-    up, especially the directories containing data or codes.
-
--   P5. Group members are requested not to store raw data outside of group-managed storage.
-
-Information Organization
-
--   P5. The group Dropbox folder should be kept organized using the folder structure:
-    `instruments\username\YYMMDD\samplename`.
-
--   P6. Samples must be named consistently with a given scheme, including `YYMMDD` and a serial number.
 
 ### Consistency of Documented vs. Recalled and Observed Practices
 
@@ -1189,7 +1099,7 @@ The **Assessment** section below provides more detail on information sharing.
 
 ```
 
-To address the remaining research questions we measuring and compared the mathematical graphs describing the workflow
+To address the remaining research questions, we measuring and compared the mathematical graphs describing the workflow
 process, information, and collaboration.
 
 ### Internal replicability
@@ -1392,20 +1302,7 @@ table below summarizes these omissions.
 As shown in the table, a significant proportion of the collaborations could not be associated with either the work
 process, the information used in it, or the analysis produced by it.
 
-## Analysis Validation
 
-We conducted semi-structured interviews with all participants to assess the strength of (dis)agreement with the analysis
-described above and its main conclusions, and with the recommendations below; and to probe for additional comments,
-reflections, and recommendations. Participants consistently agreed with the analysis and confirmed the existence of the
-gaps we noted.
-
-Further, a number of participants reflected that since the initial interviews, they had noted some of these gaps and
-adopted informal practices within their project to address them. For example, one project had a local, undocumented, but
-intentional practice of, on the occasion of formally publishing an article, depositing into lab storage all analysis
-scripts necessary to reproduce the analysis in the article.
-
-Moreover, participants agreed with all areas of recommendations. One caveat -- most participants noted that they faced
-institutional challenges in automating data collection from instruments outside the lab.
 
 # Discussion - Toward More Reproducible and Attributed Practices
 
@@ -1526,12 +1423,130 @@ to such infrastructure cost-effectively for open and reproducible research while
 
 ## Appendix I. Interview Protocol
 
-The interview protocol used in the study is shown in Appendix I as file Appendix_I_InterviewProtocol.md
+The interview protocol used in the study is included as file *Appendix_I_InterviewProtocol.md*
 
 ## Appendix II. Coding Dictionary
-The coding dictionary used in the study is shown in Appendix II as file Appendix_II_CodeDictionary_deidentified.ods
 
-## Appendix III. Tables and Figures
+The coding of the research workflow was conducted in four phases.
+
+The first phase involved the direct translation of each interviewee's narration. During this phase, only the steps in
+the sequence that were explicitly stated were recorded.
+
+The second phase was an interpretation: the intended meaning of each statement was derived by assessing what the
+researcher implied but did not explicitly state. Each step of the workflow sequence has a series of subsequences that
+occur before and after the main objective. For example, when a physical material is placed in storage, it is implied
+that the next step involving it requires its removal from storage. The first and second phases were completed for all
+interviewees before progressing.
+
+The third phase was inference. The same synthesis, characterization, and analysis techniques were often used across
+interviewees, and each lab member was subject to the same regulations to achieve each objective. Therefore, knowledge of
+one interviewee's workflow can be derived from what is known from another's workflow. This was used mainly for details
+such as the names of analysis software and data output formats.
+
+The fourth phase was extrapolation. The primary coder of this data is a materials scientist who conducted research in
+the same facilities as those used by the interviewees. This familiarity allows for inferring implied steps from the
+workflow narrative that may not have been uncovered during the interview.
+
+No additional assumptions were made during the coding process. Any gaps in information that could not be acquired
+through these four steps were left blank.
+
+The coding dictionary used in the study is included as file *Appendix_II_CodeDictionary_deidentified.ods*
+
+## Appendix III. Data Analysis and Post Validation Details
+
+### Appendix III-A. Process of Creating Workflow Graphs
+
+The process of creating the workflow graph is summarized below. (For replication purposes, we have placed all of the
+de-identified and coded interview data in a public archive, the software code necessary to construct the graph in
+detail, and all of the code needed to reproduce all figures and tables.)
+
+-   A node on the graph represents each atomic action ("step") in the workflow. The node documents all of the
+    characteristics of that single action.
+
+-   Process dependencies are represented through sequences and sub-sequences linked by "process" edges:
+
+    -   Actions performed by the same person, in a required sequence, for a single goal, and over a continuous period
+        are represented by "sequence" nodes. Edges link each sequence to one or more child sub-sequences.
+
+    -   Actions performed within a sequence (and thus by the same person) and practically simultaneous (they have no
+        natural order and occur during a brief period) are represented by sub-sequences. Edges link sub-sequences to one
+        or more child steps.
+
+-   Informational dependencies are represented by augmenting the graph with "informational" edges. An edge is created
+    whenever one of the following conditions holds.
+
+    -   When nodes share common data inputs -- this represents passive information sharing.
+
+    -   When the output of one node is the input for another -- this represents active information sharing.
+
+    -   When a single person conducts nodes during a continuous time (i.e., they are part of the same sequence) -- this
+        represents implicit information sharing.
+
+-   Collaboration (attribution) dependencies are represented by augmenting the graph with typed nodes and edges.
+
+    -   Collaborator nodes represent individual or organizational collaborators.
+
+    -   Edges are created from workflows to collaborators when either the collaborator is explicitly referenced in the
+        action (e.g., sending results to a collaborator, receiving samples from a collaborator) or by implication --
+        when the action involves some instrument (or other tool) provided by a collaborator.
+
+### Appendix III-B. 
+
+After the interviews were completed and their data was coded and analyzed, we validated the results with follow-up
+interviews and a documentation review. In the follow-up interviews, we reviewed with each subject the gaps presented by
+the preliminary analysis, confirmed whether either the subject believed the gap to exist, and addressed the gap in the
+workflow -- through some action not noted in the original interview, the gap was addressed in some other manner. Where
+these discussions pointed to workflow steps that had been omitted during the initial interview, we updated the workflow
+graphs to include these additions.
+
+We also reviewed the content of the existing group storage systems (specifically, names, directories, and file types) to
+characterize data storage patterns per project and compare these to the patterns implied by the workflow analysis. In
+addition, we use content analysis to compare information organization naming practice with the documented lab policies.
+
+We conducted semi-structured follow-up interviews with all participants to assess the strength of (dis)agreement with the analysis
+described above and its main conclusions, and with the recommendations below; and to probe for additional comments,
+reflections, and recommendations. Participants consistently agreed with the analysis and confirmed the existence of the
+gaps we noted.
+
+Further, a number of participants reflected that since the initial interviews, they had noted some of these gaps and
+adopted informal practices within their project to address them. For example, one project had a local, undocumented, but
+intentional practice of, on the occasion of formally publishing an article, depositing into lab storage all analysis
+scripts necessary to reproduce the analysis in the article.
+
+Moreover, participants agreed with all areas of recommendations. One caveat -- most participants noted that they faced
+institutional challenges in automating data collection from instruments outside the lab.
+
+## Appendix IV. Summary of Documented Data Practices
+
+*Information Sharing*
+
+-   P1. Shared data storage and management resources include a shared group account in Dropbox, a Group wiki, a shared
+    group lab notebook in LabArchives, and a group Zotero account for sharing literature references.
+
+-   P2. All raw data (defined as "data as-recorded by the measurement instruments") must be stored in the group Dropbox
+    folder and should never be modified. All internal lab computers are configured to save data to the group Dropbox
+    folder automatically. Data collected outside the group lab must be manually transferred to the group Dropbox folder.
+    Examples of raw data are JPG from a microscope, TXT from a probe station, or files in a proprietary format such as
+    RAW from XRD.
+
+-   P3. Group members can store their analysis results wherever is most convenient.
+
+*Information Security*
+
+-   P4. Group members must use MIT Enterprise version of CrashPlan to keep group-owned, and individual computers backed
+    up, especially the directories containing data or codes.
+
+-   P5. Group members are requested not to store raw data outside of group-managed storage.
+
+Information Organization
+
+-   P5. The group Dropbox folder should be kept organized using the folder structure:
+    `instruments\username\YYMMDD\samplename`.
+
+-   P6. Samples must be named consistently with a given scheme, including `YYMMDD` and a serial number.
+
+
+## Appendix V. Tables and Figures
 
 ```{r supplementary-tables, echo=doc_is_html}
 ta1.gt
