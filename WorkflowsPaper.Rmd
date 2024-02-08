@@ -24,16 +24,6 @@ institute:
 - third: Center for Research in Equitable and Open Scholarship, Massachusetts Institute
     of Technology
 output:
-  pdf_document:
-    pandoc_args:
-    - "--lua-filter=scholarly-metadata.lua"
-    - "--lua-filter=author-info-blocks.lua"
-  rticles::plos_article:
-    fig_width: 5
-    fig_height: 5
-  word_document:
-    toc: true
-    toc_depth: '2'
   html_document:
     toc: true
     toc_depth: 2
@@ -44,17 +34,26 @@ output:
     toc_float:
       collapsed: true
       smooth_scroll: true
+  rticles::plos_article:
+    fig_width: 5
+    fig_height: 5
+  pdf_document:
+    pandoc_args:
+    - "--lua-filter=scholarly-metadata.lua"
+    - "--lua-filter=author-info-blocks.lua"
+  word_document:
+    toc: true
+    toc_depth: '2'
 bibliography: references.bib
 abstract: "While small labs produce much of the fundamental experimental research
-  in material science and engineering. However, little is known about their data curation
-  practices and the extent to which they promote trust in, and transparency of, the
+  in Material Science and Engineering (MSE), little is known about their data management and sharing practices and the extent to which they promote trust in, and transparency of, the
   published research.\n In this research, we conduct a case study of a leading MSE
-  research lab to characterize the limits of current curation practice concerning
-  replicability, data-sharing, and attribution. We systematically reconstruct the
+  research lab to characterize the limits of current data management and sharing practice concerning
+  reproducibility and attribution. We systematically reconstruct the
   workflows underpinning four research projects by combining interviews, document
   review, and digital forensics. We then apply information graph analysis and computer-assisted
   retrospective auditing to identify where critical research information is unavailable
-  or at risk. \n We find that while curation practices in this leading lab protect
+  or at risk. \n We find that while data management and sharing practices in this leading lab protect
   against computer and disk failure, they are insufficient to ensure reproducibility
   or correct attribution of work -- especially when a group member withdraws before
   project completion. \n   We conclude with recommendations for adjustments to MSE
@@ -372,7 +371,7 @@ wide range of existing formal models for provenance and workflow (see, for examp
 these are designed for automated execution, and contain much more detail than is feasible to elicit during a standard
 interview. We thus used a simplified coding approach in which the actions each described action were labeled with their
 objective, task, and subtask, and the sequence, actor, input, output, data source, data target, level of automation,
-type of action, equipment, and methods used were recorded using standardized codes. (See appendix.) This tabular data
+type of action, equipment, and methods used were recorded using standardized codes. (See Appendix II.) This tabular data
 was then used to impute collaboration and data-dependency graphs (see the *Results* section below).
 
 The coding of the research workflow was conducted in four phases.
@@ -878,7 +877,7 @@ p3full %>% ggsave(filename = "figs/fig3.png" , width=7, dpi=300)
 p3full
 ```
 
-This figure provides an answer to the first [research question](#ResearchQuestions), concerning automation:
+Figure 3 provides an answer to the first [research question](#ResearchQuestions), concerning automation:
 
 > 1.  To what extent does research depend on manual processes for information management?
 
@@ -930,7 +929,7 @@ graph_table <- function(data,ntypes,etypes,glabel) {
 }
 ```
 
-The information connections within and across projects (Figure 3) are densely interconnected within projects -- a
+The information connections within and across projects (Figure 4) are densely interconnected within projects -- a
 contrast with the linearity of the process used to produce the information. Further, most information flow is implicit
 -- through shared context. Information rarely flows through direct input-output. There is no information flow between
 projects.
@@ -968,7 +967,7 @@ workflows.tg %>%
   graph_table(c("subsequence","step"),c("information:shared_context","information:shared_input","information:input_output"),"Table A1:  Information Exchange Graph Statistics") -> ta1.gt
 ```
 
-Collaboration networks (Figure 4) are also partitioned by project/workflow. The size of the grid varies substantially
+Collaboration networks (Figure 5) are also partitioned by project/workflow. The size of the grid varies substantially
 across projects.
 
 ```{r flow-graphs-collab,  echo=doc_is_html,   warning=FALSE}
@@ -1020,7 +1019,7 @@ interpretation of the workflow networks below.
 We identified the practices most relevant to data-management and scientific workflow management and grouped them into
 three categories -- information sharing, information security, and information organization:
 
-*Information Sharing.*
+*Information Sharing*
 
 -   P1. Shared data storage and management resources include a shared group account in Dropbox, a Group wiki, a shared
     group lab notebook in LabArchives, and a group Zotero account for sharing literature references.
@@ -1065,7 +1064,7 @@ We employed four strategies to evaluate the consistency of recalled practices wi
 
 \newpage
 
-The results are summarized below
+The results are summarized below in Table 1.
 
 | Documented Procedures      | Inconsistencies with Practice                                                                                                                                                            |
 |------------------------------------|------------------------------------------------------------------------------------|
@@ -1073,7 +1072,7 @@ The results are summarized below
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                             |
 | *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data, and sample can often be identified by human inspection of the file and directory name. |
 
-: Comparison of Documented Group Practice with Recalled Individual Practices
+: Table 1. Comparison of Documented Group Practice with Recalled Individual Practices
 
 The most significant deviation with formal documented practice is in the area of information organization. Of the
 `r REP_n_recent_files` deposited over two years of proximity, less than a quarter (`r REP_p_all_meta`%) provided could
@@ -1396,7 +1395,7 @@ process, the information used in it, or the analysis produced by it.
 ## Analysis Validation
 
 We conducted semi-structured interviews with all participants to assess the strength of (dis)agreement with the analysis
-described above and its main conclusions, and with the recomations below; and to probe for additional comments,
+described above and its main conclusions, and with the recommendations below; and to probe for additional comments,
 reflections, and recommendations. Participants consistently agreed with the analysis and confirmed the existence of the
 gaps we noted.
 
@@ -1525,11 +1524,14 @@ to such infrastructure cost-effectively for open and reproducible research while
 
 # Appendix
 
-## Interview Protocol & Coding Dictionary
+## Appendix I. Interview Protocol
 
-The interview protocol and coding dictionary used in the study are shown in Appendix I.
+The interview protocol used in the study is shown in Appendix I as file Appendix_I_InterviewProtocol.md
 
-## Tables
+## Appendix II. Coding Dictionary
+The coding dictionary used in the study is shown in Appendix II as file Appendix_II_CodeDictionary_deidentified.ods
+
+## Appendix III. Tables and Figures
 
 ```{r supplementary-tables, echo=doc_is_html}
 ta1.gt
