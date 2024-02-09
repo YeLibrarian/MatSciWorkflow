@@ -774,7 +774,7 @@ engineering suggests that the human error rates are substantial in the absence o
 error-mitigation regimes [@reason1995, @jacobs1995]. For example, over the last fifteen years, human error in medicine
 has been a focus of study -- and systematic reviews demonstrate both the high level of harmful and avoidable human error
 and the efficacy of error-reduction processes such as the adoption of automated recording systems, and the use of
-explicit checklists and logs for manual procedures[@toerri2000, @mederror2021].
+explicit checklists and logs for manual procedures [@toerri2000, @mederror2021].
 
 During the interviews, we collected information about the types of automation associated with each instrument, storage
 facility, and analysis method. As described in the methodology section, each workflow step was coded for the type of
@@ -1170,7 +1170,7 @@ each output to potential documentation based on the following.
   )
 ```
 
-Note that the existence of documentation is necessary for unassisted replication ut is not sufficient: We did not
+Note that the existence of documentation is necessary for unassisted replication is not sufficient: We did not
 evaluate the completeness of the documentation, if it existed -- only its presence. Notwithstanding, analysis
 documentation was missing in over half of the cases examined. This obstructs future replication of results and
 publications -- which must rely on communication with the researcher who conducted this analysis (and upon their memory)
@@ -1254,6 +1254,8 @@ the distribution of deposit latencies has a long tail, with some files not depos
 hours) after creation.
 
 \newpage
+
+## Attribution Robustness
 
 The final [research question](#ResearchQuestions) concerns attribution:
 
@@ -1356,7 +1358,7 @@ infrastructure and tooling have the potential to mitigate a number of the gaps i
     common categories of human errors that occur at this stage, such as erasing or overwriting local files, loss or
     replacement of the storage device, failure to delete files after the transfer is complete, or transfer of the files
     to an incorrect destination (such as the user's personal computer or cloud) -- should these occur. This suggests
-    that reducing manual data transfer and operations will increase errors.
+    that manual data transfer and operations will increase errors.
 
     The portable storage is typically a simple offline USB "flash drive." Alternatives USB-compatible mobile storage
     devices, including built-in wireless networking and data synchronization capabilities, are now readily available.
