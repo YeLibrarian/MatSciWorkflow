@@ -142,9 +142,8 @@ theme_set(theme_grey(base_size = 8))
 
 Reproducibility is a foundation of science. Over the last two and half decades, however, mounting evidence has called
 into question the reproducibility of findings in a continually expanding set of fields -- leading to regular calls to
-assess reproducibility and improve scientific practice systematically [@ReproducibilityReplicabilityScience2019]. And
-more recently, there have been high-profile calls and initiatives by research societies, funders, and publishers to make
-scientific practice and data more open and transparent [@wilkinson2016,@opensci2018]and to develop systematic
+assess reproducibility and improve scientific practice systematically [@ReproducibilityReplicabilityScience2019]. More recently, there have been high-profile calls and initiatives by research societies, funders, and publishers to make
+scientific practice and data more open and transparent [@wilkinson2016,@opensci2018] and to develop systematic
 attribution standards and [@mcnutt2018] practices for contributors to scientific publications and outputs.
 
 Science stakeholders increasingly realize that a scientific discipline's reproducibility needs to be empirically
@@ -210,13 +209,13 @@ sharing, discovery, access, and analysis. The MDF (Material Science Data Facilit
 of Standards (NIST) and the Center for Hierarchical Materials Design (CHIMaD), now hosts about 578 datasets (116
 experimental datasets) and indexes over 970,000 records of Materials data from other repositories as of December 2021.
 Other recent efforts include infrastructure for a federated registry of information resources for materials science
-[@plante2021]; a proposed controlled vocabulary and metadata schema for materials discover [@medina-smith2021]; and a
+[@plante2021]; a proposed controlled vocabulary and metadata schema for materials discovery [@medina-smith2021]; and a
 new experimental infrastructure under development for the integration of Electronic Lab Notebooks and data archiving
 systems with materials science workflows [@brandt2021]. In industry, software platforms (e.g., Citrine Platform
 [@citrineinformatics] ) that combine the data management infrastructure and AI-based tools facilitating materials design
 provide customizable solutions for corporate labs, which have more consistent pipeline workflows and can afford the
 resource-intensive infrastructure. FAIR-DI (FAIR Data Infrastructure for Physics, Chemistry, Materials Science, and
-Astronomy e.V.), a European-originated effort, aims at building a reliable infrastructure for data from materials
+Astronomy e.V.), a European-originated effort, aims to build a reliable infrastructure for data from materials
 science, engineering, and astronomy that follows FAIR principles [@fair-di]. FAIR-DI launched the NOMAD repository
 (<https://nomad-lab.eu/>) in 2014 and has been developing data management and sharing support. Their recent FAIRmat
 hands-on Tutorial Series [@fair-di] is designed to provide connections between the existing infrastructure and
@@ -226,12 +225,12 @@ More recently, as a paradigm shift rooted in the exponential growth of computing
 intelligence (AI) based predictions and experimental automation via robotics are explored and examined to accelerate
 materials discovery with the promise of replacing the manual and human-intensive material discovery process
 [@pyzer-knapp2022]. For example, a technology roadmap was outlined to articulate the hardware and software
-infrastructure requirements and demonstrate a re-imagined role of humans as ensuring data is appropriately managed,
+infrastructure requirements and demonstrate a re-imagined role of humans in ensuring data is appropriately managed,
 aggregated, standardized, and shared [@delgado-licona2023]. The analysis of the potential to apply accelerated materials
 discovery in clean energy highlighted insufficient experimental datasets for AI model training as a limitation for clean
 energy as a relatively new technology [@maleki2022].
 
-Notwithstanding these particular efforts and the overall progress in developing tools, standards and practices, the
+Notwithstanding these particular efforts and the overall progress in developing tools, standards, and practices, the
 adoption of these infrastructure and tools by individual "small" labs remains limited. No direct solutions have been
 provided for individual labs to streamline their workflows and efficiently prepare their data for sharing throughout the
 research lifecycle. Instead, these labs use informal sociotechnical workflows that combine documented procedures,
@@ -322,21 +321,21 @@ several reasons.
 
 External rankings of MIT's materials science department place it in the top five schools worldwide. MIT is a
 well-resourced institution, and MIT faculty are typically well-supported. MIT faculty, and Professor Jaramillo
-specifically, are generally successful in obtaining external research support. Professor Jaramillo is interested in
-reproducible research and open science: he has published in this area, group has developed related software prototypes
+specifically, are successful in obtaining external research support. Professor Jaramillo is interested in
+reproducible research and open science: he has published in this area, his group has developed related software prototypes
 and grant proposals, and advocated for reproducible and open science practice within his institution and discipline.
 Thus, this lab should be considered a near-best-case for FAIR data workflows in small materials science labs -- it is
 implausible that many other small experimental materials science groups have the resources, experience, or interest to
 do substantially better in this area.
 
 Synergistic collaboration between group members, including graduate students and postdoctoral fellows, allows for
-continuous monitoring lab equipment. This collaboration is facilitated by shared information repositories, including a
+continuous monitoring of lab equipment. This collaboration is facilitated by shared information repositories, including a
 group Electronic Lab Notebook (ELN) in LabArchives, a group Dropbox account, and Google Drive. Access to all the
 cloud-based storage and services are provided to the group via MIT campus-wide site licenses. Protocol for saving and
 sharing information is specified in a group manual, which all researchers in the group are encouraged to follow for both
 the group repositories and their personal data storage systems. In this way, this lab is representative of good
 practices for data-sharing, as individual data from one researcher is, ideally, stored in a format that is
-comprehensible to and a location that is accessible by all members of the lab. Consequently, reproducibility of research
+comprehensible to, and a location that is accessible by all members of the lab. Consequently, reproducibility of research
 is possible in the absence of the originator of the research.
 
 Investigating the workflow of four researchers within the Jaramillo group highlights which practices are most essential
@@ -368,10 +367,10 @@ operational step. The interview would then ask follow-up questions to fill gaps 
 
 The interview coding process aimed to describe each step of the workflow in a systematic structure database. There is a
 wide range of existing formal models for provenance and workflow (see, for example, [@jandre2020]). However, most of
-these are designed for automated execution, and contain much more detail than is feasible to elicit during a standard
+these are designed for automated execution and contain much more detail than is feasible to elicit during a standard
 interview. We thus used a simplified coding approach in which the actions each described action were labeled with their
 objective, task, and subtask, and the sequence, actor, input, output, data source, data target, level of automation,
-type of action, equipment, and methods used were recorded using standardized codes. (See *Appendix II* for coding method and dictionary.) This tabular data was then used to impute collaboration and data-dependency graphs (see the *Results* section below).
+type of action, equipment, and methods used were recorded using standardized codes. (See *Appendix II* for the coding method and dictionary.) This tabular data was then used to impute collaboration and data-dependency graphs (see the *Results* section below).
 
 ## Workflow Representation
 
@@ -387,7 +386,7 @@ information flow graphs directly from the workflow process graph. Finally, we ap
 social network analysis [@sharir1981; @horwitz1992; @carrington2005models] to probe questions related to collaboration
 (through analysis of connectivity and centrality), attribution (through comparing the explicitly elicited collaboration
 graph with its workflow-induced counterpart) and replicability (dependency, and subcomponent analysis of the information
-flow graph). (See Appendix III-A for detailed process)
+flow graph). (See Appendix III-A for details)
 
 
 
@@ -470,10 +469,10 @@ fa1.plot <-
 ```
 
 Through the interview process, we determined that the lab used a shared folder in Dropbox as its official repository for
-collected data and documentation. With permission from the PI, we cloned a snapshot of the repository contents, an
+collected data and documentation. With permission from the PI, we cloned a snapshot of the repository contents and
 collected all of the file-system metadata for use in a digital forensic analysis. For consistency with lab policies and
-with the timeline of the projects we evaluated, we restricted our analysis to files deposited between January of 2019
-and January of 2022.
+with the timeline of the projects we evaluated, we restricted our analysis to files deposited between January 2019
+and January 2022.
 
 Overall, deposit patterns demonstrated that the repository was actively used -- with deposit rates varying seasonally.
 (See *Appendix V*). All information was collected for `r nrow(recent_files.tbl)` files -- including file names, paths,
@@ -484,9 +483,9 @@ used regular expression-based cleaning and parsing to extract this information w
 then used to check for inconsistencies with documented information organization practices -- as described below in the
 results section.
 
-## Post Analysis Validation
+## Post-Analysis Validation
 
-See *Appendix III-B* for details on post analysis validation through follow-up interviews and documentation review. 
+See *Appendix III-B* for details on post-analysis validation through follow-up interviews and documentation review. 
 
 
 # Results
@@ -718,7 +717,7 @@ workflow_graph_by_interviewee("A",2)
 Interviewee 'B' received the synthesized sample from a collaborator. They are responsible for preparing the sample for
 analysis, characterizing it, and analyzing the data. They use a personal LabArchives notebook as an electronic lab
 notebook, so any conditions needed to interpret and replicate a process are recorded. The group LabArchives notebook is
-used for recording measurements on lab tools that are shared as to maintain a consistent tool log (required by the
+used for recording measurements on lab tools that are shared to maintain a consistent tool log (required by the
 Professor). The group Dropbox is used for saving raw data directly from instruments. Post-processed data is saved to a
 personal Dropbox.
 
@@ -728,7 +727,7 @@ workflow_graph_by_interviewee("B",2)
 ```
 
 Interviewee 'C' received the synthesized materials from a collaborator. They prepare the acquired sample for analysis,
-characterize it, and analyze the results. Finally, they transforms the sample via a laser set-up; this process is
+characterize it, and analyze the results. Finally, they transform the sample via a laser set-up; this process is
 iterative, as the transformed sample is characterized. A personal OneNote notebook is used for experimental notes.
 OneNote is manually synchronized to the group LabArchives notebook. In the group Dropbox, they record all sample notes,
 raw data, and analyzed data.
@@ -751,7 +750,7 @@ workflow_graph_by_interviewee("D",2)
 ```
 
 Note that each workflow is hierarchical -- each project does not interact (there are no connecting branches), and the
-work can be represented as a set of independent, self-contained tasks. (Summary graph statistics are shown in the
+work can be represented as a set of independent, self-contained tasks. (Summary graph statistics are shown in
 *Appendix V, Table A1*.) Most of the tasks contain only one atomic action. Further, there is a rhythm across each workflow
 in which the type of task at each step alternates.
 
@@ -824,8 +823,8 @@ procedures. Further, targeted automation enables people to shift their efforts t
 reduces the cost and effort of logging and auditing. So where errors do occur, they are more readily detected.
 
 Further, explicit communication and documentation are relatively infrequent; there is a high level of reliance on manual
-transmission of information (e.g., for instrument setup or for contextualization of the analysis); and a substantial
-incidence of e-mail and portable media for information storage. Together, this suggest that there is significant
+transmission of information (e.g., for instrument setup or contextualization of the analysis); and a substantial
+incidence of e-mail and portable media for information storage. Together, this suggests that there is a significant
 opportunity for human error in data management and organization.
 
 ## Collaboration and Information Flow
@@ -944,16 +943,10 @@ Our first [research question](#ResearchQuestions) concerns documented practices:
 We identified the practices through direct interview questions administered during face-to-face interviews of the PI and
 group members. We then obtained copies of the documented processes from the subjects to characterize these.
 
-During the interviews, one interviewee, who self-identified as a founding member of the group, mentioned a document
-titled "Jaramillo group new member checklist," which described shared computing resources, lab safety, and access, as
-well as data management practices. The interviewee shared the document afterwards as a part of their Group Handbook. We
-reviewed the document and the Computing Resources page on the group Wiki site to summarize the essential practices
-required for each group member. We also compared the documented group practice with the individual practices elicited
-through interviews. We reviewed these documents both for relevance to the research question above and to inform the
-interpretation of the workflow networks below.
+During the interviews, one interviewee, who self-identified as a founding member of the group, mentioned a document titled “Jaramillo group new member checklist,” which described shared computing resources, lab safety, and access, as well as data management practices. We reviewed the document and the group Wiki site to summarize documented practices. We also compared the documented practice with practices elicited through interviews for relevance to our research questions, and to inform the interpretation of the workflow networks below.
 
-We identified the practices most relevant to data-management and scientific workflow management and grouped them into
-three categories -- information sharing, information security, and information organization. (See *Appendix IV* for description of the practices.)
+We identified the practices most relevant to data management and scientific workflow management and grouped them into
+three categories -- information sharing, information security, and information organization. (See *Appendix IV*.)
 
 
 ### Consistency of Documented vs. Recalled and Observed Practices
@@ -963,8 +956,8 @@ We employed four strategies to evaluate the consistency of recalled practices wi
 1.  In general, we identified all instances where subjects explicitly referred to documented or established practices
     during the interview, either during the description of their project or separately.
 
-2.  Concerning information sharing practices, we used network analysis of the workflows to identify where each
-    information object was stored, and compare this against documented policy.
+2.  Concerning information-sharing practices, we used network analysis of the workflows to identify where each
+    information object was stored and compare this against documented policy.
 
 3.  Concerning information security processes, whenever the network analysis identified information as stored only in a
     non-group location, we verified with the subject whether the location was backed up using CrashPlan or an equivalent
@@ -980,7 +973,7 @@ The results are summarized below in Table 1.
 |------------------------------------|------------------------------------------------------------------------------------|
 | *Information sharing*      | Practices are predominantly consistent with documentation, although occasional lapses occur.                                                                                             |
 | *Information* *security*   | Practices are consistent with documentation.                                                                                                                                             |
-| *Information organization* | Practices are frequently inconsistent with documentation, however the instrument, username, data, and sample can often be identified by human inspection of the file and directory name. |
+| *Information organization* | Practices are frequently inconsistent with documentation, however, the instrument, username, data, and sample can often be identified by human inspection of the file and directory name. |
 
 : Table 1. Comparison of Documented Group Practice with Recalled Individual Practices
 
@@ -1099,7 +1092,7 @@ The **Assessment** section below provides more detail on information sharing.
 
 ```
 
-To address the remaining research questions, we measuring and compared the mathematical graphs describing the workflow
+To address the remaining research questions, we measured and compared the mathematical graphs describing the workflow
 process, information, and collaboration.
 
 ### Internal replicability
@@ -1178,14 +1171,14 @@ and trial-and-error.
 
 ### Robustness of Storage Practices {#robustness}
 
-The following [research question](#ResearchQuestions) concerns robustness of storage practices:
+The following [research question](#ResearchQuestions) concerns the robustness of storage practices:
 
 > 4.  To what extent are data management processes robust enough to survive the departure of a project member or the
 >     loss of an individual's personal computer or storage?
 
 We use the workflow information graph to probe this question to identify all collected data (digital and physical
 samples created as part of each scientific workflow), metadata, and analysis results. We then use the process of the
-graph to trace the flow of these objects across tasks and into storage location. From this set of traces, we can infer
+graph to trace the flow of these objects across tasks and into storage locations. From this set of traces, we can infer
 the content of the designated group storage location post-analysis. The results are summarized in the table below.
 
 ```{r storage-table,  echo=doc_is_html}
@@ -1214,11 +1207,11 @@ outputs.tbl %>%
           domain = c(0, 1)
         )
       ) %>%
-      tab_header("Table 3: Proportion of output in group managed storage, by type.", subtitle = "A substantial portion of highlighted outputs are at risk.") %>%
-      tab_source_note("Note: processed data includes derived, linked and cleaned data; metadata includes configuration files, output logs, and manual documentation")
+      tab_header("Table 3: Proportion of output in managed storage, by type.", subtitle = "A substantial portion of highlighted outputs are at risk.") %>%
+      tab_source_note("Note: processed data includes derived, linked, and cleaned data; metadata includes configuration files, output logs, and manual documentation")
 ```
 
-On the positive side, almost all data objects (with exceptions) are deposited into institutionally-managed shared-group
+On the positive side, almost all data objects (with exceptions) are deposited into institutionally managed shared-group
 storage by the process's end. This is consistent with documented lab policy and is necessary for the work to support
 future data sharing and for the workflow to be robust to the loss of an individual computer.
 
@@ -1237,16 +1230,16 @@ process.
 Serendipitously, file forensics data collected from the lab-shared storage system provides a glimpse of the reliability
 of manual transfer processes. We can measure the delay between the data creation and deposit by comparing the manually
 recorded date in the path with the automatically recorded date in the shared filesystem. For half of these files, the
-delay is relatively small (40% of these files were deposited within `r REP_v_plag50days` days). However, a substantial
+delay is relatively small (40% of these files were deposited within `r REP_v_plag50days` day). However, a substantial
 percentage were considerably delayed (25% of files were deposited only after a delay exceeding `r REP_v_plag75days`
 days). (Note that two mechanisms could produce significant delays. First, where raw data is collected and transferred by
 hand, errors, interruptions, or forgetfulness can contribute to the delayed deposit. Second, during the validation
 interviews, we identified that some projects adopted an informal process of adding files associated with a publication
 -- after that publication had been accepted. Those added files can include processed data files and descriptions of data
 collection and analysis processes. It is impossible to determine the proportion of lag attributable to each mechanism
-because of the inconsistent use of documented and naming practices and the variation of undocumented practices.)
+because of the inconsistent use of documented naming practices and the variation of undocumented practices.)
 
-The two years of files examined it also included a substantial number (`r REP_p_nlag`) of image files that contained
+The two years of files examined also included a substantial number (`r REP_p_nlag`) of image files that contained
 internal creation-time metadata produced by the original creating software. By comparing this time-stamp with the shared
 file-system time-stamp, we can compute the elapsed time between creation and deposit. The delay is quite small for most
 of these files -- less than a workday (75% of these files were deposited within `r REP_v_lag75hours` hours). However,
@@ -1278,7 +1271,7 @@ Workflows may document collaborations explicitly (e.g., through entries in a lab
 analysis document) or indirectly (through an e-mail correspondence history). To quantify the degree to which attribution
 relies on memory, we compared the list of collaborators stated by interviewers to a list of collaborators that could be
 detected through workflow outputs and documentation. To do this, we extracted direct and implied collaborators from each
-workflow step -- e.g., when another person was recorded as doing the analysis, when the interviewee sent someone an
+workflow step -- e.g., when another person was recorded as doing the analysis when the interviewee sent someone an
 analysis by e-mail, or an analysis when an external instrument was used.
 
 As expected from the interviews, many collaborators are omitted from workflow documentation or action altogether. The
@@ -1325,7 +1318,7 @@ the gaps discussed above:
 
 -   The addition of processes to regularly audit/validate ongoing projects for reproducibility and attribution.
 
--   Changes to research infrastructure (defined broadly) to automate the capture, transfer or storage of critical
+-   Changes to research infrastructure (defined broadly) to automate the capture, transfer, or storage of critical
     information, preferably in standardized formats with necessary metadata.
 
 -   Changes to the lab policies regarding requirements for those activities are done manually.
@@ -1376,7 +1369,7 @@ infrastructure and tooling have the potential to mitigate a number of the gaps i
     are now readily available that can monitor target folders in one storage system and replicate or synchronize them
     with another. Using these tools and a more systematized practice of folder organization for work products kept in
     personal storage would enable more reliable and robust data lab practices without sacrificing the convenience of
-    personal cloud-storage accounts.
+    personal cloud storage accounts.
 
 *Refining practices*. Although infrastructure and audition of current practices can be expected to facilitate the
 workflow gaps identified in this analysis, additional refinements to lab practices are also likely to be necessary in
@@ -1384,8 +1377,7 @@ two areas:
 
 -   Recommendation 5: Develop explicit practices around collaborator attribution. Practices are needed to identify the
     contributions of collaborators systematically. This might include (a) enhancing existing workflow project
-    documentation (e.g., in the lab notebook) to identify when the researcher uses externally contributed resources
-    clearly, borrowed equipment, or information received from collaborator, (b) explicitly saving contributed data,
+    documentation (e.g., in the lab notebook) to identify when the researcher uses externally contributed resources, borrowed equipment, or information received from a collaborator, (b) explicitly saving contributed data,
     analyses, and comments from collaborators in the group storage, rather than in personal e-mail, and (c) defining
     contributor roles according to taxonomy, such as the CRediT (Contributor Roles Taxonomy, <https://credit.niso.org/>)
     in group documentations.
@@ -1393,7 +1385,7 @@ two areas:
 -   Recommendation 6: Develop explicit practices around reproducibility beyond the stage of raw data.
 
     -   Make documentation for standard practices at commonly used equipment in external locations (i.e., other MIT
-        facilities, like MRL, CMSE). Consistent practices at these facilities would allow for the comprehensible
+        facilities, like MRL and DMSE). Consistent practices at these facilities would allow for the comprehensible
         transfer of data between researchers within the lab.
 
     -   Establish a group-shared location for metadata (especially equipment parameters) since this is essential to
@@ -1404,17 +1396,17 @@ two areas:
 
 ## Future Research
 
-In this article, we have identified gaps in an exemplar set of materials science workflow process and characterized
+In this article, we have identified gaps in an exemplar set of materials science workflow processes and characterized
 approaches to address those gaps. However, the effectiveness of specific practices and approaches is an open question:
 Empirical evidence, preferably from designed interventions, is needed to reliably measure how better practices can
 improve reproducibility and research attribution. [@opensci2018; @altman2021] Moreover, these practices are embedded in
 and responsive to a much broader system of scientific incentives, institutional and organizational collaboration, and
-professional training [@altman2018] -- research is needed in how effective practices can be aligned with incentives,
+professional training [@altman2018] -- research is needed on how effective practices can be aligned with incentives,
 training, institutional coordination, and infrastructure improvement. Intrinsically, recognizing the value of FAIR data
 sharing and computational use of experimental data for the research community in general and their own study could
 further motivate individual researchers and their teams. Hiring data curators or research workflow facilitators to
 provide discipline-specific support for particular groups and departments could further enable researchers to overcome
-the barriers of starting new practices. Improvement of interfaces for human-computer interaction, accessibility, and
+the barriers to starting new practices. Improvement of interfaces for human-computer interaction, accessibility, and
 security of cloud-based systems could also be the key to lowering individual groups' barriers to fully adapting digital
 workflows recommended, especially when shared instrument facilities are often inseparable components of the
 infrastructure. With the improvement of research infrastructure for MSE that can integrate experimental data management
@@ -1492,7 +1484,7 @@ detail, and all of the code needed to reproduce all figures and tables.)
         action (e.g., sending results to a collaborator, receiving samples from a collaborator) or by implication --
         when the action involves some instrument (or other tool) provided by a collaborator.
 
-### Appendix III-B. 
+### Appendix III-B. Post-Analysis Validation 
 
 After the interviews were completed and their data was coded and analyzed, we validated the results with follow-up
 interviews and a documentation review. In the follow-up interviews, we reviewed with each subject the gaps presented by
@@ -1558,7 +1550,7 @@ fa1.plot + plot_annotation(title = "Figure A1. Trends in file creation in group 
 
 # Data Availability
 
-The deidentified datasets generated during or analyzed during the current study, as well as the R scripts used for
+The deidentified datasets generated during or analyzed during the current study, as well as the R scripts, used for
 analysis and generating the research report, are available in the Zenodo repository under [CC BY
 4.0](https://creativecommons.org/licenses/by/4.0/) license, <https://doi.org/10.5281/zenodo.7158715>
 
